@@ -4,6 +4,5 @@ import Content from './components/Content.vue'
 </script>
 
 <template>
-  <NavBar />
-  <Content />
+  <Content Komponent="Heute"/>
 </template>
