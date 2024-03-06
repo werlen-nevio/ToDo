@@ -121,6 +121,13 @@
     .ListDatumText{
         margin-bottom: 5px;
     }
+
+    .btn-edit{
+        background: none;
+        border: none;
+        color: white;
+        outline: none;
+    }
 }
 
 body {
@@ -185,4 +192,27 @@ body {
 
 #Content{
     margin: 0;
+}
+
+.modal-content{
+    background-color: #6c757d;
+
+    .form-control{
+        background-color: #6c757d;
+        border: 1px solid black;
+    }
+}
+
+.modal-header, .modal-body, .modal-footer{
+    border: none;
+    
+    .btn.btn-primary{
+        width: 100% !important;
+        background-color: #2b3944;
+        color: #E3AA29;
+        border: none;
+    }
+    span{
+        text-shadow: none;
+    }
 }
