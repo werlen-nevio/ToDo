@@ -13,23 +13,22 @@
         </div>
     </div>
 </template>
-  
-  <script>
-  export default {
-    props: {
-        Titel: {
-            type: String,
-            required: true
-        },
-        Beschreibung: {
-            type: String,
-            required: true
-        },
-        Datum: {
-            type: Date,
-            required: true
+
+<script>
+    export default {
+        props: {
+            Titel: {
+                type: String,
+                required: true
+            },
+            Beschreibung: {
+                type: String,
+                required: true
+            },
+            Datum: {
+                type: Date,
+                required: true
+            }
         }
     }
-  }
-  </script>
-  
+</script>
