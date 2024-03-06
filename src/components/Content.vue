@@ -8,10 +8,15 @@
 
 <template>
   <div class="Content">
-    <Header :Titel="Komponent" />
-      <div v-if="Komponent === 'Heute'">
-        <Heute />
-      </div>
+    <div v-if="Komponent === 'Kategorie'">
+      <Header Titel="getKatName" />
+    </div>
+    <div v-else>
+      <Header :Titel="Komponent" />
+    </div>
+    <div v-if="Komponent === 'Heute'">
+      <Heute />
+    </div>
     <div v-else-if="Komponent === 'Geplant'">
       <Geplant />
     </div>
@@ -19,7 +24,7 @@
       <Alle />
     </div>
     <div v-else>
-      <Kategorie ID="1"/>
+      <Kategorie :ID="KategorieID" />
     </div>
   </div>
 </template>
@@ -30,6 +35,10 @@
       Komponent: {
         type: String,
         required: true
+      },
+      KategorieID: {
+        type: String,
+        required: false
       }
     }
   }

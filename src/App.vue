@@ -4,5 +4,5 @@ import Content from './components/Content.vue'
 </script>
 
 <template>
-  <Content Komponent="Alle"/>
+  <Content Komponent="Kategorie" KategorieID="1"/>
 </template>
