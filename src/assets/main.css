@@ -1,15 +1,138 @@
+.Content{    
+    margin: 30px;
+    margin-top: 40px;
+
+    .Title{
+        height: 48px;
+        padding: 2px;
+        background-color: #2B3944;
+    }
+
+    .Title-Text{
+        background-color: #2B3944;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        color: #E3AA29;
+    }
+
+    .btn-secondary{
+        width: 48px;
+        height: 48px !important;
+        color: black;
+        font-size: 22px;
+    }
+
+    .Filter-btn{
+        margin-right: 5px;
+    }
+
+    .Header {
+        padding: 0;
+        margin-bottom: 30px;
+    }
+
+    .ToDoComponent, .ToDoComponentDetails, .ToDoComponentDetail, .ToDoCheckbox{
+        background-color: #2B3944 !important;
+    }
+
+    .ToDoComponentDetails{
+        padding-right: 0;
+    }
+
+    .ToDoComponent{
+        margin-bottom: 20px;
+        border: 1px solid black;
+        padding: 0;
+    }
+
+    .ToDoBeschreibung, .ToDoDatum{
+        color: white;
+    }
+
+    .ToDoBeschreibung{
+        margin-bottom: 5px;
+    }
+
+    .ToDoDatum{
+        margin-bottom: 10px;
+    }
+
+    .ToDoTitel{
+        color: #E3AA29;
+        margin-bottom: 0;
+    }
+
+    .ToDoCheckbox{
+        width: 40px;
+    }
+
+    input[type="checkbox"] {
+        margin-top: 9px !important;
+        appearance: none;
+        margin: 0;
+        width: 20px;
+        height: 20px;
+        border: 1px solid black;
+        border-radius: 0.15em;
+        transform: translateY(-0.075em);
+        display: grid;
+        place-content: center;
+    }
+
+    .form-control + .form-control {
+        margin-top: 1em;
+    }
+
+    input[type="checkbox"]::before {
+        content: "";
+        width: 15px;
+        height: 15px;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        background-color: #E3AA29;
+        transform-origin: bottom left;
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    }
+
+    input[type="checkbox"]:checked::before {
+        transform: scale(1);
+    }
+
+    .TodoIcon{
+        color: white;
+        font-size: 25px;
+        width: 30px;
+        background-color: #2B3944;
+        margin-top: 32px;
+        padding: 0;
+    }
+
+    i{
+        background: none;
+    }
+
+    .ListDatum{
+        color: #E3AA29;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .ListDatumText{
+        margin-bottom: 5px;
+    }
+}
+
 body {
     background-color: #374A59;
     width: 100%;
 }
 
-#container {
-    height: 100%;
-
+#NavBar {
+    height: 100vh;
     background-color: #2b3944;
     color: #fff;
     width: 250px;
-    /*height: 370px;*/
     margin: 0;
     padding-top: 15px;
 }
@@ -38,22 +161,28 @@ body {
 }
 
 .logoStyle {
+    bottom: 0;
     background-color: #2b3944;
     color: #fff;
     width: 250px;
     height: 50px;
     margin: 0;
     margin-top: 0;
-    padding-top: 49.2px;
     position: absolute;
 }
 
 #logo {
-    /* Falls möglich Logo 50px x 50px und mit padding-right 200px*/
     background-color: #2b3944;
-    width: 250px;
-    height: 250px;
+    width: 50px;
+    height: 50px;
     margin: 0;
     padding: 0;
-    position: absolute;
+}
+
+.Content{
+    width: calc(100vw - 345px);
+}
+
+#Content{
+    margin: 0;
 }
