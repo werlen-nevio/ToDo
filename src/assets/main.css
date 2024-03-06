@@ -128,7 +128,6 @@ body {
     background-color: #2b3944;
     color: #fff;
     width: 250px;
-    /*height: 370px;*/
     margin: 0;
     padding-top: 15px;
 }
@@ -164,7 +163,6 @@ body {
     margin: 0;
     margin-top: 0;
     padding-top: 49.2px;
-    position: absolute;
 }
 
 #logo {
@@ -174,5 +172,4 @@ body {
     height: 250px;
     margin: 0;
     padding: 0;
-    position: absolute;
 }
