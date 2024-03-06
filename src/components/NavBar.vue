@@ -22,7 +22,7 @@ export default {
 </script>
 
 <template>
-  <div id="container">
+  <div id="NavBar">
     <!-- Main Buttons -->
     <div class="text-center">
       <Box box-title="Heute" class="mainButtons" /><br>
