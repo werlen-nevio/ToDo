@@ -5,9 +5,9 @@ import Heute from './Heute.vue'
 
 <template>
   <div class="Content">
-    <Header :Titel="Komponent"/>
+    <Header :Titel="Komponent" />
     <div v-if="Komponent === 'Heute'">
-      <Heute />
+     <Heute />
     </div>
     <div v-else>
       <!-- Hier kommt der Inhalt, der angezeigt wird, wenn Komponent nicht gleich 'test' ist -->

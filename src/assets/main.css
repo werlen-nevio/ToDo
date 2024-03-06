@@ -2,34 +2,111 @@
     background-color: #374A59;
 }
 
-.Content{
+.Content{    
     margin: 30px;
     margin-top: 40px;
-}
-
-.Title{
-    height: 48px;
-    padding: 2px;
-    background-color: #2B3944;
-}
-
-.Title-Text{
-    background-color: #2B3944;
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    color: #E3AA29;
-}
-
-.btn-secondary{
-    width: 48px;
-    height: 48px !important;
-    color: black;
-    font-size: 22px;
-}
-
-.Filter-btn{
-    margin-right: 5px;
+    
+    .Title{
+        height: 48px;
+        padding: 2px;
+        background-color: #2B3944;
+    }
+    
+    .Title-Text{
+        background-color: #2B3944;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        color: #E3AA29;
+    }
+    
+    .btn-secondary{
+        width: 48px;
+        height: 48px !important;
+        color: black;
+        font-size: 22px;
+    }
+    
+    .Filter-btn{
+        margin-right: 5px;
+    }
+    
+    .Header {
+        padding: 0;
+        margin-bottom: 30px;
+    }
+    
+    .ToDoComponent, .ToDoComponentDetails, .ToDoComponentDetail, .ToDoCheckbox{
+        background-color: #2B3944 !important;
+    }
+    
+    .ToDoComponent{
+        margin-bottom: 20px;
+        border: 1px solid black;
+        padding: 0;
+    }
+    
+    .ToDoBeschreibung, .ToDoDatum{
+        color: white;
+    }
+    
+    .ToDoBeschreibung{
+        margin-bottom: 5px;
+    }
+    
+    .ToDoDatum{
+        margin-bottom: 10px;
+    }
+    
+    .ToDoTitel{
+        color: #E3AA29;
+        margin-bottom: 0;
+    }
+    
+    .ToDoCheckbox{
+        width: 40px;
+    }
+    
+    input[type="checkbox"] {
+        margin-top: 9px !important;
+        appearance: none;
+        margin: 0;
+        width: 20px;
+        height: 20px;
+        border: 1px solid black;
+        border-radius: 0.15em;
+        transform: translateY(-0.075em);
+        display: grid;
+        place-content: center;
+      }
+      
+      .form-control + .form-control {
+        margin-top: 1em;
+      }
+    
+      input[type="checkbox"]::before {
+        content: "";
+        width: 15px;
+        height: 15px;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        background-color: #E3AA29;
+        transform-origin: bottom left;
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      }
+      
+      input[type="checkbox"]:checked::before {
+        transform: scale(1);
+      }
+    
+    .TodoIcon{
+        color: white;
+        font-size: 25px;
+        width: 50px;
+        background-color: #2B3944;
+        margin-top: 32px;
+    }
+    
     i{
         background: none;
     }
