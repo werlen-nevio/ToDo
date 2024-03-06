@@ -122,7 +122,13 @@
     }
 }
 
-.mainStyle{
+body {
+    background-color: #374A59;
+    width: 100%;
+}
+
+#container {
+    height: 100%;
     background-color: #2b3944;
     color: #fff;
     width: 250px;
@@ -131,23 +137,13 @@
     padding-top: 15px;
 }
 
-/*.boxStyle {
-    width: 200px;
-    background-color: #4e5768;
-    color: #fff;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
-}*/
-
 .mainButtons {
     font-size: 2rem;
     width: 200px;
     background-color: #4e5768;
     color: #fff;
     padding-top: 7px;
-    padding-bottom: 7px;
+    padding-bottom: 0.1px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -158,8 +154,8 @@
     width: 200px;
     background-color: #4e5768;
     color: #fff;
-    padding-top: 1.5px;
-    padding-bottom: 1.5px;
+    /*padding-top: 1.5px;
+    padding-bottom: 1.5px;*/
     margin-left: auto;
     margin-right: auto;
 }
@@ -170,13 +166,16 @@
     width: 250px;
     height: 50px;
     margin: 0;
-    padding-top: 7px;
+    margin-top: 0;
+    padding-top: 49.2px;
     position: absolute;
 }
 
 #logo {
-    width: 50px;
-    height: 50px;
+    /* Falls möglich Logo 50px x 50px und mit padding-right 200px*/
+    background-color: #2b3944;
+    width: 250px;
+    height: 250px;
     margin: 0;
     padding: 0;
     position: absolute;
