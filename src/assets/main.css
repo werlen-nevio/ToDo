@@ -36,6 +36,10 @@
         background-color: #2B3944 !important;
     }
 
+    .ToDoComponentDetails{
+        padding-right: 0;
+    }
+
     .ToDoComponent{
         margin-bottom: 20px;
         border: 1px solid black;
@@ -98,9 +102,10 @@
     .TodoIcon{
         color: white;
         font-size: 25px;
-        width: 50px;
+        width: 30px;
         background-color: #2B3944;
         margin-top: 32px;
+        padding: 0;
     }
 
     i{
@@ -172,4 +177,12 @@ body {
     height: 50px;
     margin: 0;
     padding: 0;
+}
+
+.Content{
+    width: calc(100vw - 345px);
+}
+
+#Content{
+    margin: 0;
 }

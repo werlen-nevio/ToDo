@@ -8,7 +8,7 @@
             <p class="ToDoComponentDetail ToDoBeschreibung"> {{ Beschreibung }} </p>
             <p class="ToDoComponentDetail ToDoDatum"> {{ Datum }} </p>
         </div>
-        <div class="TodoIcon col-md-1 float-right">
+        <div class="TodoIcon col-md-1 float-left">
             <i class="fa-solid fa-pen"></i>
         </div>
     </div>

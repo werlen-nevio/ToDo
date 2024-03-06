@@ -1,6 +1,9 @@
-<script>
-import Box from './Box.vue'
+<script setup>
+  import Box from './Box.vue'
+  import Content from './Content.vue'
+</script>
 
+<script>
 export default {
   components: {
     Box
@@ -22,10 +25,11 @@ export default {
 </script>
 
 <template>
-  <div id="NavBar">
+  <div class="float-left">
+    <div id="NavBar">
     <!-- Main Buttons -->
     <div class="text-center">
-      <Box box-title="Heute" class="mainButtons" /><br>
+      <Box box-title="Alle" class="mainButtons" /><br>
       <Box box-title="Heute" class="mainButtons" /><br>
       <Box box-title="Geplant" class="mainButtons" /><br>
     </div>
@@ -39,5 +43,9 @@ export default {
     <div class="logoStyle">
       <img src="../img/logo.png" alt="logo" id="logo">
     </div>
+    </div>
+  </div>
+  <div id="Content" class="Content col-md-1 float-left">
+    <Content Komponent="Alle"/>
   </div>
 </template>
