@@ -25,7 +25,7 @@ export default {
   <div id="container">
     <!-- Main Buttons -->
     <div class="text-center">
-      <Box box-title="Heute" class="mainButtons" /><br>
+      <Box box-title="Alle" class="mainButtons" /><br>
       <Box box-title="Heute" class="mainButtons" /><br>
       <Box box-title="Geplant" class="mainButtons" /><br>
     </div>
