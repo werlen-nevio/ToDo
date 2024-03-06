@@ -110,4 +110,14 @@
     i{
         background: none;
     }
+
+    .ListDatum{
+        color: #E3AA29;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .ListDatumText{
+        margin-bottom: 5px;
+    }
 }

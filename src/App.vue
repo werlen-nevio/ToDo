@@ -4,5 +4,5 @@ import Content from './components/Content.vue'
 </script>
 
 <template>
-  <Content Komponent="Heute"/>
+  <Content Komponent="Alle"/>
 </template>

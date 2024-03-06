@@ -1,6 +1,9 @@
 <script setup>
   import Header from './Header.vue'
   import Heute from './Heute.vue'
+  import Geplant from './Geplant.vue'
+  import Alle from './Alle.vue'
+  import Kategorie from './Kategorie.vue'
 </script>
 
 <template>
@@ -9,8 +12,14 @@
       <div v-if="Komponent === 'Heute'">
         <Heute />
       </div>
+    <div v-else-if="Komponent === 'Geplant'">
+      <Geplant />
+    </div>
+    <div v-else-if="Komponent === 'Alle'">
+      <Alle />
+    </div>
     <div v-else>
-      <!-- Hier kommt der Inhalt, der angezeigt wird, wenn Komponent nicht gleich 'test' ist -->
+      <Kategorie ID="1"/>
     </div>
   </div>
 </template>
