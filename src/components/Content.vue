@@ -1,14 +1,14 @@
 <script setup>
-import Header from './Header.vue'
-import Heute from './Heute.vue'
+  import Header from './Header.vue'
+  import Heute from './Heute.vue'
 </script>
 
 <template>
   <div class="Content">
     <Header :Titel="Komponent" />
-    <div v-if="Komponent === 'Heute'">
-     <Heute />
-    </div>
+      <div v-if="Komponent === 'Heute'">
+        <Heute />
+      </div>
     <div v-else>
       <!-- Hier kommt der Inhalt, der angezeigt wird, wenn Komponent nicht gleich 'test' ist -->
     </div>
@@ -16,12 +16,12 @@ import Heute from './Heute.vue'
 </template>
 
 <script>
-export default {
-  props: {
-    Komponent: {
-      type: String,
-      required: true
+  export default {
+    props: {
+      Komponent: {
+        type: String,
+        required: true
+      }
     }
   }
-}
 </script>
