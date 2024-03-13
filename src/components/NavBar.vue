@@ -1,9 +1,4 @@
-<script setup>
-  import Box from './Box.vue'
-  import Content from './Content.vue'
-  import AddCategoryModal from './AddCategoryModal.vue'
-</script>
-
+<!-- NavBar.vue -->
 <template>
   <div class="float-left">
     <div id="NavBar">
@@ -16,7 +11,7 @@
       <!-- Category Buttons -->
       <div>
         <p>Kategorien</p>
-        <Box v-for="(category, index) in categories" :key="index" :box-title="category" class="categoryButtons" /><br>
+        <Box v-for="(category, index) in categories" :key="index" :box-title="category" class="categoryButtons" @click="openEditCategoryModal(index)" /><br>
         <Box box-title="+" class="categoryButtons" @click="openAddCategoryModal()" />
       </div>
       <!-- Logo -->
@@ -29,17 +24,29 @@
     <Content :Komponent="activeComponent"/> <!-- Pass activeComponent as Komponent prop -->
   </div>
   <AddCategoryModal />
+  <EditCategoryModal @editCategory="editCategory" />
 </template>
 
 <script>
+import Box from './Box.vue'
+import Content from './Content.vue'
+import AddCategoryModal from './AddCategoryModal.vue'
+import EditCategoryModal from './EditCategoryModal.vue' // Importiere EditCategoryModal
+
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
 export default {
   components: {
     Box,
-    Content
+    Content,
+    AddCategoryModal,
+    EditCategoryModal
   },
   data() {
     return {
-      categories: ['Kategorie 1'],
+      categories: this.loadCategoriesFromLocalStorage() || ['Kategorie 1'],
       activeComponent: 'Alle' // Default component
     }
   },
@@ -48,8 +55,23 @@ export default {
       this.activeComponent = routeName; // Set the active component
     },
     openAddCategoryModal() {
-      // Open the modal
+      // Open the modal for adding a new category
       $('#Modal_Add_Category').modal('show');
+    },
+    openEditCategoryModal(index) {
+      // Open the modal for editing a category
+      this.editingCategoryIndex = index;
+      $('#Modal_Edit_Category').modal('show');
+    },
+    editCategory(newName) {
+      // Edit the category with the new name
+      if (newName && newName.trim() !== '') {
+        this.categories[this.editingCategoryIndex] = newName.trim();
+        localStorage.setItem('categories', JSON.stringify(this.categories));
+      }
+    },
+    loadCategoriesFromLocalStorage() {
+      return JSON.parse(localStorage.getItem('categories'));
     }
   }
 }
