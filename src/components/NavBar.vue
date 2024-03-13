@@ -1,13 +1,12 @@
 <script setup>
-  import { useRouter } from 'vue-router'; // Importiere das Router-Modul
+  import { useRouter } from 'vue-router'
   import Box from './Box.vue'
   import Content from './Content.vue'
   import addCategoryModal from './AddCategoryModal.vue'
 
-  const router = useRouter(); // Initialisiere den Router
-
+  const router = useRouter();
   const navigateTo = (routeName) => {
-    router.push({ name: routeName }); // Navigiere zur angegebenen Route
+    router.push({ name: routeName });
   };
 </script>
 
