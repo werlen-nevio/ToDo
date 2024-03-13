@@ -67,6 +67,10 @@
         width: 40px;
     }
 
+    input[type="text"] {
+        color: black;
+    }
+
     input[type="checkbox"] {
         margin-top: 9px !important;
         appearance: none;
