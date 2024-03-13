@@ -2,14 +2,13 @@
     <div class="modal fade" :id="'Modal_'+ ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 v-if="ID != 0" class="modal-title" id="exampleModalLabel">ToDo bearbeiten</h5>
-                <h5 v-else class="modal-title" id="exampleModalLabel">ToDo hinzufügen</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><i class="fa-solid fa-x"></i></span>
-                </button>
-            </div>
-            <form>
+                <div class="modal-header">
+                    <h5 v-if="ID != 0" class="modal-title" id="exampleModalLabel">ToDo bearbeiten</h5>
+                    <h5 v-else class="modal-title" id="exampleModalLabel">ToDo hinzufügen</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fa-solid fa-x"></i></span>
+                    </button>
+                </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="Titel">Titel *</label>
@@ -31,9 +30,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary">Speichern</button>
+                    <button v-if="ID != 0" class="btn btn-primary">Speichern</button>
+                    <button v-else class="btn btn-primary">hinzufügen</button>
                 </div>
-            </form>
             </div>
         </div>
     </div>
