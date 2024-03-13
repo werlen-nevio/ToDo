@@ -2,6 +2,7 @@
   import { useRouter } from 'vue-router'; // Importiere das Router-Modul
   import Box from './Box.vue'
   import Content from './Content.vue'
+  import addCategoryModal from './AddCategoryModal.vue'
 
   const router = useRouter(); // Initialisiere den Router
 
@@ -33,6 +34,9 @@ export default {
     },
     navigateTo(routeName) {
       router.push({ name: routeName });
+    },
+    openModal() {
+      $('#Modal_Add_Category').modal('show');
     }
   }
 }
@@ -51,7 +55,7 @@ export default {
       <div>
         <p>Kategorien</p>
         <Box v-for="(category, index) in categories" :key="index" :box-title="category" class="categoryButtons" /><br>
-        <Box box-title="+" class="categoryButtons" @click="addCategory" />
+        <Box box-title="+" class="categoryButtons" @click="openModal()" /> <!-- @TODO Add Category Button -->
       </div>
       <!-- Logo -->
       <div class="logoStyle">
@@ -62,4 +66,5 @@ export default {
   <div id="Content" class="Content col-md-1 float-left">
     <Content :Komponent="'Alle'"/>
   </div>
+  <addCategoryModal :Titel="Titel" />
 </template>
