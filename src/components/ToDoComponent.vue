@@ -1,5 +1,5 @@
 <script setup>
-    import EditModal from './EditModal.vue';
+    import ContentModal from './ContentModal.vue';
 </script>
 
 <template>
@@ -19,7 +19,12 @@
       </div>
     </div>
   
-    <EditModal />
+    <ContentModal 
+      :Titel="Titel"
+      :Beschreibung="Beschreibung"
+      :Datum="Datum"
+      :ID="ID"
+    />
   </template>
   
   <script>
@@ -34,7 +39,7 @@
         required: true
       },
       Datum: {
-        type: Date,
+        type: String,
         required: true
       },
       ID: {
@@ -44,7 +49,7 @@
     },
     methods: {
       openModal() {
-        $('#myModal').modal('show');
+        $('#Modal_' + this.ID).modal('show');
       }
     }
   }

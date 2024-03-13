@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" :id="'Modal_'+ ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -12,11 +12,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="Titel">Titel *</label>
-                        <input type="text" class="form-control" id="Titel" placeholder="Titel">
+                        <input type="text" class="form-control" id="Titel" placeholder="Titel" :value="Titel">
                     </div>
                     <div class="form-group">
                         <label for="Beschreibung">Beschreibung *</label>
-                        <input type="text" class="form-control" id="Beschreibung" placeholder="Beschreibung">
+                        <input type="text" class="form-control" id="Beschreibung" placeholder="Beschreibung" :value="Beschreibung">
                     </div>
                     <div class="form-group">
                         <label for="Datum">Datum *</label>
@@ -37,3 +37,26 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+  props: {
+    Titel: {
+      type: String,
+      required: false
+    },
+    Beschreibung: {
+      type: String,
+      required: false
+    },
+    Datum: {
+      type: String,
+      required: false
+    },
+    ID: {
+      type: Number,
+      required: true
+    }
+  }
+}
+</script>  

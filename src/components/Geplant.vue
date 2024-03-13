@@ -5,5 +5,5 @@
 
 <template>
     <Datum Datum="10.10.2023"/>
-    <ToDoComponent Titel="Titel" Beschreibung="Beschreibung" Datum="22.03.2024 10:10" ID="1"/>
+    <ToDoComponent Titel="Titel" Beschreibung="Beschreibung" Datum="22.03.2024 10:10" :ID="Number(1)"/>
 </template>
