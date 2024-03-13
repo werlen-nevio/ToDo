@@ -67,7 +67,8 @@ export default {
             "Titel": $("#Titel").val(),
             "Beschreibung": $("#Beschreibung").val(),
             "Datum": $("#Datum").val(),
-            "Kategorie": 0
+            "Kategorie": 0,
+            "Finished": false
         };
 
         todos.push(newTodo);
