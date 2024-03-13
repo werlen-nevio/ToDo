@@ -31,7 +31,7 @@
                 </div>
                 <div class="modal-footer">
                     <button v-if="ID != 0" class="btn btn-primary">Speichern</button>
-                    <button v-else class="btn btn-primary">hinzufügen</button>
+                    <button v-else @click="addTodo()" class="btn btn-primary">hinzufügen</button>
                 </div>
             </div>
         </div>
@@ -57,6 +57,25 @@ export default {
       type: Number,
       required: true
     }
+  },
+  methods: {
+    addTodo() {
+        const todos = JSON.parse(localStorage.getItem('todos')) || [];
+
+        const newTodo = {
+            "id": todos.length + 1,
+            "Titel": $("#Titel").val(),
+            "Beschreibung": $("#Beschreibung").val(),
+            "Datum": $("#Datum").val(),
+            "Kategorie": 0
+        };
+
+        todos.push(newTodo);
+
+        localStorage.setItem('todos', JSON.stringify(todos));
+    },
+    editTodo() {
+    }
   }
 }
-</script>  
+</script>
