@@ -1,44 +1,7 @@
 <script setup>
-  import { useRouter } from 'vue-router'
   import Box from './Box.vue'
   import Content from './Content.vue'
-  import addCategoryModal from './AddCategoryModal.vue'
-
-  const router = useRouter();
-  const navigateTo = (routeName) => {
-    router.push({ name: routeName });
-  };
-</script>
-
-<script>
-import Box from './Box.vue'
-import Content from './Content.vue'
-
-export default {
-  components: {
-    Box,
-    Content
-  },
-  data() {
-    return {
-      categories: ['Kategorie 1']
-    }
-  },
-  methods: {
-    addCategory() {
-      const newCategory = prompt('Bitte geben Sie den Namen der neuen Kategorie ein:')
-      if (newCategory) {
-        this.categories.push(newCategory)
-      }
-    },
-    navigateTo(routeName) {
-      router.push({ name: routeName });
-    },
-    openModal() {
-      $('#Modal_Add_Category').modal('show');
-    }
-  }
-}
+  import AddCategoryModal from './AddCategoryModal.vue'
 </script>
 
 <template>
@@ -54,7 +17,7 @@ export default {
       <div>
         <p>Kategorien</p>
         <Box v-for="(category, index) in categories" :key="index" :box-title="category" class="categoryButtons" /><br>
-        <Box box-title="+" class="categoryButtons" @click="openModal()" /> <!-- @TODO Add Category Button -->
+        <Box box-title="+" class="categoryButtons" @click="openAddCategoryModal()" />
       </div>
       <!-- Logo -->
       <div class="logoStyle">
@@ -63,7 +26,31 @@ export default {
     </div>
   </div>
   <div id="Content" class="Content col-md-1 float-left">
-    <Content :Komponent="'Alle'"/>
+    <Content :Komponent="activeComponent"/> <!-- Pass activeComponent as Komponent prop -->
   </div>
-  <addCategoryModal :Titel="Titel" />
+  <AddCategoryModal />
 </template>
+
+<script>
+export default {
+  components: {
+    Box,
+    Content
+  },
+  data() {
+    return {
+      categories: ['Kategorie 1'],
+      activeComponent: 'Alle' // Default component
+    }
+  },
+  methods: {
+    navigateTo(routeName) {
+      this.activeComponent = routeName; // Set the active component
+    },
+    openAddCategoryModal() {
+      // Open the modal
+      $('#Modal_Add_Category').modal('show');
+    }
+  }
+}
+</script>

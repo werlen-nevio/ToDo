@@ -12,7 +12,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="Titel">Kategoriename *</label>
-                        <input type="text" class="form-control" id="Titel" placeholder="Titel" :value="Titel">
+                        <input type="text" class="form-control" id="Titel" placeholder="Titel" value="Titel">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -23,14 +23,3 @@
         </div>
     </div>
 </template>
-
-<script>
-export default {
-  props: {
-    Titel: {
-      type: String,
-      required: false
-    }
-  }
-}
-</script>  
