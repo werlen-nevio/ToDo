@@ -216,3 +216,7 @@ body {
         text-shadow: none;
     }
 }
+
+.mainButtons:hover, .categoryButtons:hover{
+    cursor: pointer;
+}
