@@ -35,6 +35,7 @@ export default defineComponent({
 
         watch(showFinished, (newValue) => {
             localStorage.setItem('showFinished', newValue);
+            window.location.reload(); // Seite neu laden
         });
 
         return { showFinished };
