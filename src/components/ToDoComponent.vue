@@ -1,56 +1,67 @@
-<script setup>
-    import ContentModal from './ContentModal.vue';
-</script>
-
 <template>
-    <div class="ToDoComponent col-md-12 clearfix">
-      <div class="ToDoCheckbox col-md-1 float-left">
-        <input class="ToDoCheckboxInput" type="checkbox" name="" id="">
-      </div>
-      <div class="ToDoComponentDetails col-md-11 float-left">
-        <h2 class="ToDoComponentDetail ToDoTitel">{{ Titel }}</h2>
-        <p class="ToDoComponentDetail ToDoBeschreibung">{{ Beschreibung }}</p>
-        <p class="ToDoComponentDetail ToDoDatum">{{ Datum }}</p>
-      </div>
-      <div class="TodoIcon col-md-1 float-left">
-        <button @click="openModal" class="btn-edit">
-          <i class="fa-solid fa-pen"></i>
-        </button>
-      </div>
+  <div class="ToDoComponent col-md-12 clearfix">
+    <div class="ToDoCheckbox col-md-1 float-left">
+      <input class="ToDoCheckboxInput" type="checkbox" :checked="Finished" @change="toggleStatus">
     </div>
-  
-    <ContentModal 
-      :Titel="Titel"
-      :Beschreibung="Beschreibung"
-      :Datum="Datum"
-      :ID="ID"
-    />
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      Titel: {
-        type: String,
-        required: true
-      },
-      Beschreibung: {
-        type: String,
-        required: true
-      },
-      Datum: {
-        type: String,
-        required: true
-      },
-      ID: {
-        type: Number,
-        required: true
-      }
+    <div class="ToDoComponentDetails col-md-11 float-left">
+      <h2 class="ToDoComponentDetail ToDoTitel">{{ Titel }}</h2>
+      <p class="ToDoComponentDetail ToDoBeschreibung">{{ Beschreibung }}</p>
+      <p class="ToDoComponentDetail ToDoDatum">{{ Datum }}</p>
+    </div>
+    <div class="TodoIcon col-md-1 float-left">
+      <button @click="openModal" class="btn-edit">
+        <i class="fa-solid fa-pen"></i>
+      </button>
+    </div>
+  </div>
+
+  <ContentModal 
+    :Titel="Titel"
+    :Beschreibung="Beschreibung"
+    :Datum="Datum"
+    :ID="ID"
+  />
+</template>
+
+<script>
+export default {
+  props: {
+    Titel: {
+      type: String,
+      required: true
     },
-    methods: {
-      openModal() {
-        $('#Modal_' + this.ID).modal('show');
-      }
+    Beschreibung: {
+      type: String,
+      required: true
+    },
+    Datum: {
+      type: String,
+      required: true
+    },
+    ID: {
+      type: Number,
+      required: true
+    },
+    Finished: {
+      type: Boolean,
+      required: true
+    }
+  },
+  methods: {
+    openModal() {
+      $('#Modal_' + this.ID).modal('show');
+    },
+    toggleStatus(event) {
+      // Aktualisiere den Status im localstorage
+      const todos = JSON.parse(localStorage.getItem('todos'));
+      const updatedTodos = todos.map(todo => {
+        if (todo.id === this.ID) {
+          todo.Finished = event.target.checked;
+        }
+        return todo;
+      });
+      localStorage.setItem('todos', JSON.stringify(updatedTodos));
     }
   }
-  </script>  
+}
+</script>  
