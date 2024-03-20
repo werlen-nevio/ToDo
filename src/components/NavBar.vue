@@ -60,6 +60,6 @@ export default {
     </div>
   </div>
   <div id="Content" class="Content col-md-1 float-left">
-    <Content :Komponent="'Heute'"/>
+    <Content :Komponent="'Alle'"/>
   </div>
 </template>
