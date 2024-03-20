@@ -1,5 +1,5 @@
 <template>
-  <div class="modal fade" :class="{ 'show': editCategoryModal }" id="Modal_Edit_Category" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="Modal_Edit_Category" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -16,8 +16,8 @@
             </div>
           </div>
           <div class="modal-footer">
-            <!-- Add a button to delete the category -->
-            <!-- <button type="button" class="btn btn-primary" data-delete="modal">Löschen</button> -->
+            <button type="button" class="btn btn-danger" @click="deleteCategory(categoryId)">Löschen</button>
+
             <button type="submit" class="btn btn-primary">Speichern</button>
           </div>
         </form>
@@ -27,29 +27,34 @@
 </template>
 
 <script>
-import { computed } from 'vue';
-import { useCategoryStore } from '../stores/categoryStore';
+import { useCategoriesStore } from '../Store/categoryStore.js'; // Importiere den Pinia-Speicher
 
 export default {
-  setup() {
-    const categoryStore = useCategoryStore();
-
-    const editCategoryModal = computed(() => categoryStore.editCategoryModal);
-    const newCategoryName = ref('');
-
-    const saveCategory = () => {
-      if (newCategoryName.value.trim() !== '') {
-        categoryStore.saveCategory(newCategoryName.value);
-        newCategoryName.value = ''; // Clear the input field after saving
-        editCategoryModal.value = false; // Close the modal after saving
-      }
-    };
-
+  props: {
+    categoryId: {
+      type: Number,
+      required: true
+    }
+  },
+  data() {
     return {
-      editCategoryModal,
-      newCategoryName,
-      saveCategory,
+      newCategoryName: '',
     };
+  },
+  methods: {
+    saveCategory() {
+      if (this.newCategoryName.trim() !== '') {
+        const store = useCategoriesStore(); // Zugriff auf den Pinia-Speicher
+        store.editCategory({ id: this.categoryId, name: this.newCategoryName }); // Bearbeiten der Kategorie im Store
+        this.newCategoryName = ''; // Clear the input field after saving
+        $('#Modal_Edit_Category').modal('hide'); // Close the modal after saving
+      }
+    },
+    deleteCategory() {
+      const store = useCategoriesStore(); // Zugriff auf den Pinia-Speicher
+      store.deleteCategory(this.categoryId); // Löschen der Kategorie im Store
+      $('#Modal_Edit_Category').modal('hide'); // Close the modal after deleting
+    }
   }
 };
 </script>
