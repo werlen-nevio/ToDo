@@ -8,7 +8,7 @@
             <span aria-hidden="true"><i class="fa-solid fa-x"></i></span>
           </button>
         </div>
-        <form @submit.prevent="addKategorie">
+        <form>
           <div class="modal-body">
             <div class="form-group">
               <label for="Titel">Kategoriename *</label>
@@ -16,7 +16,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Speichern</button>
+            <button data-dismiss="modal" @click="addKategorie()" class="btn btn-primary">Speichern</button>
           </div>
         </form>
       </div>
