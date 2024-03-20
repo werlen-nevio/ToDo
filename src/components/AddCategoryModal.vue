@@ -36,11 +36,12 @@ export default {
     const titel = ref('');
 
     const addKategorie = () => {
-      if (titel.value.trim() !== '') {
-        categoryStore.addCategory(titel.value); // Füge die Kategorie dem Store hinzu
-        titel.value = ''; // Clear the input field after saving
-        addCategoryModal.value = false; // Close the modal after saving
-      }
+      const newKategorie = {
+        id: categoryStore.categories.length + 1,
+        Titel: titel.value
+      };
+
+      categoryStore.addCategory(newKategorie);
     };
 
     return {
