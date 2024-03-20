@@ -1,26 +1,23 @@
 <script setup>
-    import Datum from './Datum.vue'
+import { computed } from 'vue'
+import { useTodosStore } from '../Store/todoStore.js'
+import Datum from './Datum.vue'
 
-    const todos = JSON.parse(localStorage.getItem('todos'));
-    const datumsArray = [];
+const todosStore = useTodosStore();
 
-    if (todos && Array.isArray(todos)) { // Überprüfe, ob todos nicht null ist und ein Array ist
-        todos.forEach(todo => {
-            if (todo.Datum && todo.Datum.trim() !== '') {
-                const date = new Date(todo.Datum);
-                const formattedDate = `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getFullYear()}`;
-                datumsArray.push(formattedDate);
-            }
-        });
-    } else {
-        console.error("No todos found in localStorage or todos is not an array");
-    }
-
-    const orderedDatumsArray = datumsArray.sort((a, b) => a.date - b.date);
+const orderedDatumsArray = computed(() => {
+  return todosStore.todos
+    .filter(todo => todo.Datum && todo.Datum.trim() !== '')
+    .map(todo => {
+      const date = new Date(todo.Datum);
+      return `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getFullYear()}`;
+    })
+    .sort((a, b) => new Date(a) - new Date(b));
+});
 </script>
 
 <template>
-    <div>
-        <Datum v-for="(datum, index) in orderedDatumsArray" :key="index" :Datum="datum" />
-    </div>
+  <div>
+    <Datum v-for="(datum, index) in orderedDatumsArray" :key="index" :Datum="datum" />
+  </div>
 </template>
