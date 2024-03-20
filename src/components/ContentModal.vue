@@ -31,7 +31,7 @@
                 </div>
                 <div class="modal-footer">
                     <button v-if="ID != 0" class="btn btn-primary">Speichern</button>
-                    <button v-else @click="addTodo()" class="btn btn-primary">hinzufügen</button>
+                    <button v-else @click="addTodo()" class="btn btn-primary">Hinzufügen</button>
                 </div>
             </div>
         </div>
