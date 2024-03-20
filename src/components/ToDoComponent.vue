@@ -10,7 +10,7 @@
     <div class="ToDoComponentDetails col-md-11 float-left">
       <h2 class="ToDoComponentDetail ToDoTitel">{{ Titel }}</h2>
       <p class="ToDoComponentDetail ToDoBeschreibung">{{ Beschreibung }}</p>
-      <p class="ToDoComponentDetail ToDoDatum">{{ Datum }}</p>
+      <p class="ToDoComponentDetail ToDoDatum">{{ formatDate(Datum) }}</p>
     </div>
     <div class="TodoIcon col-md-1 float-left">
       <button @click="openModal" class="btn-edit">
@@ -65,7 +65,12 @@ export default {
         return todo;
       });
       localStorage.setItem('todos', JSON.stringify(updatedTodos));
+    },
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return date.toLocaleDateString('de-DE', options);
     }
   }
 }
-</script>  
+</script>
