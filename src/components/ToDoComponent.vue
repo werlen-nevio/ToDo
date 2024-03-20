@@ -1,3 +1,7 @@
+<script setup>
+  import ContentModal from './ContentModal.vue';
+</script>
+
 <template>
   <div class="ToDoComponent col-md-12 clearfix">
     <div class="ToDoCheckbox col-md-1 float-left">
