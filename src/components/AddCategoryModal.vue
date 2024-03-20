@@ -12,14 +12,44 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="Titel">Kategoriename *</label>
-                        <input type="text" class="form-control" id="Titel" placeholder="Titel" value="Titel">
+                        <input type="text" class="form-control" v-model="titel">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary">Speichern</button>
+                    <button @click.prevent="addKategorie()" class="btn btn-primary">Speichern</button>
                 </div>
             </form>
             </div>
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            titel: ''
+        };
+    },
+    methods: {
+        addKategorie() {
+            const categories = JSON.parse(localStorage.getItem('categories')) || [];
+
+            const newCategory = {
+                "id": categories.length + 1,
+                "name": this.titel
+            };
+
+            categories.push(newCategory);
+
+            this.titel = '';
+
+            // Modal schliessen
+
+            console.log(categories);
+
+            localStorage.setItem('categories', JSON.stringify(categories));
+        }
+    }
+};
+</script>

@@ -17,7 +17,9 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+            <!-- Add a button to delete the category
+            <button type="button" class="btn btn-primary" data-delete="modal">Löschen</button>
+            -->
             <button type="submit" class="btn btn-primary">Speichern</button>
           </div>
         </form>
