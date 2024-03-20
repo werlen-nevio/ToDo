@@ -42,6 +42,7 @@ export default {
       };
 
       categoryStore.addCategory(newKategorie);
+      titel.value = '';
     };
 
     return {
