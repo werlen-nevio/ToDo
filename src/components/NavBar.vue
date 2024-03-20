@@ -36,8 +36,8 @@ export default {
   },
   setup() {
     const categoriesStore = useCategoriesStore();
-    const activeComponent = ref('Alle'); // Initial active component
-    const KategorieID = ref(0); // Defining KategorieID as ref
+    const activeComponent = ref('Alle');
+    const KategorieID = ref(0);
 
     const navigateTo = (routeName) => {
       activeComponent.value = routeName;
@@ -46,7 +46,7 @@ export default {
     const navigateToKat = (routeName, id) => {
       activeComponent.value = routeName;
       console.log(id);
-      KategorieID.value = id; // Updating the value of KategorieID using its .value property
+      KategorieID.value = id;
     };
 
     const openAddCategoryModal = () => {
@@ -56,7 +56,7 @@ export default {
     return {
       categories: categoriesStore.getCategories(),
       activeComponent,
-      KategorieID, // Returning KategorieID as part of the setup
+      KategorieID,
       navigateTo,
       navigateToKat,
       openAddCategoryModal
