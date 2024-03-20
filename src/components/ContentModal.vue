@@ -31,7 +31,7 @@
                 </div>
                 <div class="modal-footer">
                     <button v-if="ID != 0" class="btn btn-primary">Speichern</button>
-                    <button v-else @click="addTodo()" class="btn btn-primary">Hinzufügen</button>
+                    <button v-else data-dismiss="modal" @click="addTodo()" class="btn btn-primary">Hinzufügen</button>
                 </div>
             </div>
         </div>
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import { useTodosStore } from '../Store/todoStore.js'; // Import the store
+
 export default {
   props: {
     Titel: {
@@ -58,25 +60,26 @@ export default {
       required: true
     }
   },
-  methods: {
-    addTodo() {
-        const todos = JSON.parse(localStorage.getItem('todos')) || [];
+  setup() {
+    const store = useTodosStore();
 
-        const newTodo = {
-            "id": todos.length + 1,
-            "Titel": $("#Titel").val(),
-            "Beschreibung": $("#Beschreibung").val(),
-            "Datum": $("#Datum").val(),
-            "Kategorie": 0,
-            "Finished": false
-        };
+    const addTodo = () => {
+      const newTodo = {
+        id: store.todos.length + 1,
+        Titel: $("#Titel").val(),
+        Beschreibung: $("#Beschreibung").val(),
+        Datum: $("#Datum").val(),
+        Kategorie: 0,
+        Finished: false
+      };
 
-        todos.push(newTodo);
+      store.addTodo(newTodo);
+    };
 
-        localStorage.setItem('todos', JSON.stringify(todos));
-    },
-    editTodo() {
-    }
-  }
-}
+    return {
+      store,
+      addTodo,
+    };
+  },
+};
 </script>

@@ -7,29 +7,34 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
+import { useTodosStore } from '../Store/todoStore.js';
 import ToDoComponent from './ToDoComponent.vue';
 
-const todos = JSON.parse(localStorage.getItem('todos')) || [];
-let showFinished = JSON.parse(localStorage.getItem('showFinished'));
+const store = useTodosStore();
 
-const filteredTodos = todos.filter(todo => {
+const filteredTodos = computed(() => {
   const today = new Date();
-  const todoDate = new Date(todo.Datum);
+  const allTodos = store.todos;
 
-  // Filter logics
-  if (!showFinished) {
-    return (
-      today.getFullYear() === todoDate.getFullYear() &&
-      today.getMonth() === todoDate.getMonth() &&
-      today.getDate() === todoDate.getDate() &&
-      !todo.Finished
-    );
-  } else {
-    return (
-      today.getFullYear() === todoDate.getFullYear() &&
-      today.getMonth() === todoDate.getMonth() &&
-      today.getDate() === todoDate.getDate()
-    );
-  }
+  return allTodos.filter(todo => {
+    const todoDate = new Date(todo.Datum);
+    if (!showFinished) {
+      return (
+        today.getFullYear() === todoDate.getFullYear() &&
+        today.getMonth() === todoDate.getMonth() &&
+        today.getDate() === todoDate.getDate() &&
+        !todo.Finished
+      );
+    } else {
+      return (
+        today.getFullYear() === todoDate.getFullYear() &&
+        today.getMonth() === todoDate.getMonth() &&
+        today.getDate() === todoDate.getDate()
+      );
+    }
+  });
 });
+
+let showFinished = JSON.parse(localStorage.getItem('showFinished'));
 </script>
