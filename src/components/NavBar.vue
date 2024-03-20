@@ -22,13 +22,12 @@
 </template>
 
 <script>
-import Box from './Box.vue'
-import Content from './Content.vue'
-import AddCategoryModal from './AddCategoryModal.vue'
-import { useCategoriesStore } from '../Store/categoryStore.js'; // Adjust path as needed
+import { ref } from 'vue';
+import Box from './Box.vue';
+import Content from './Content.vue';
+import AddCategoryModal from './AddCategoryModal.vue';
+import { useCategoriesStore } from '../Store/categoryStore.js';
 import { useRouter } from 'vue-router';
-
-const router = useRouter();
 
 export default {
   components: {
@@ -37,23 +36,22 @@ export default {
     AddCategoryModal
   },
   setup() {
-    // Access categories and store methods from Pinia
     const categoriesStore = useCategoriesStore();
+    const activeComponent = ref('Alle'); // Initial active component
+
+    const navigateTo = (routeName) => {
+      activeComponent.value = routeName;
+    };
+
+    const openAddCategoryModal = () => {
+      $('#Modal_Add_Category').modal('show');
+    };
 
     return {
       categories: categoriesStore.getCategories(),
-      activeComponent: 'Alle', // Default component
-      // Other methods (navigateTo, openAddCategoryModal, etc.) remain the same
-      navigateTo(routeName) {
-        this.activeComponent = routeName;
-      },
-      openAddCategoryModal() {
-        $('#Modal_Add_Category').modal('show');
-      },
-      editCategory(newName) {
-        // Edit the category with the new name using the store (updated)
-        categoriesStore.editCategory({ name: newName.trim() }); // Assuming category has a "name" property
-      }
+      activeComponent,
+      navigateTo,
+      openAddCategoryModal
     };
   }
 };
