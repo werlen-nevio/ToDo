@@ -8,7 +8,7 @@
       </div>
       <div>
         <p>Kategorien</p>
-        <Box v-for="(category, index) in categories" :key="index" :box-title="category.Titel" class="categoryButtons" @click="openEditCategoryModal(index)" /><br>
+        <Box v-for="(category, index) in categories" :key="index" :box-title="category.Titel" class="categoryButtons"/><br>
         <Box box-title="+" class="categoryButtons" @click="openAddCategoryModal()" />
       </div>
       <div class="logoStyle">
@@ -19,15 +19,12 @@
   <div id="Content" class="Content col-md-1 float-left">
     <Content :Komponent="activeComponent" /> </div>
   <AddCategoryModal />
-  <EditCategoryModal @editCategory="editCategory" />
 </template>
 
 <script>
 import Box from './Box.vue'
 import Content from './Content.vue'
 import AddCategoryModal from './AddCategoryModal.vue'
-import EditCategoryModal from './EditCategoryModal.vue'
-
 import { useCategoriesStore } from '../Store/categoryStore.js'; // Adjust path as needed
 import { useRouter } from 'vue-router';
 
@@ -37,8 +34,7 @@ export default {
   components: {
     Box,
     Content,
-    AddCategoryModal,
-    EditCategoryModal
+    AddCategoryModal
   },
   setup() {
     // Access categories and store methods from Pinia
@@ -53,9 +49,6 @@ export default {
       },
       openAddCategoryModal() {
         $('#Modal_Add_Category').modal('show');
-      },
-      openEditCategoryModal(index) {
-        $('#Modal_Edit_Category').modal('show');
       },
       editCategory(newName) {
         // Edit the category with the new name using the store (updated)
