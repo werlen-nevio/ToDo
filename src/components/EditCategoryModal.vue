@@ -1,6 +1,5 @@
-<!-- EditCategoryModal.vue -->
 <template>
-  <div class="modal fade" id="Modal_Edit_Category" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" :class="{ 'show': editCategoryModal }" id="Modal_Edit_Category" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -17,9 +16,8 @@
             </div>
           </div>
           <div class="modal-footer">
-            <!-- Add a button to delete the category
-            <button type="button" class="btn btn-primary" data-delete="modal">Löschen</button>
-            -->
+            <!-- Add a button to delete the category -->
+            <!-- <button type="button" class="btn btn-primary" data-delete="modal">Löschen</button> -->
             <button type="submit" class="btn btn-primary">Speichern</button>
           </div>
         </form>
@@ -29,20 +27,29 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+import { useCategoryStore } from '../stores/categoryStore';
+
 export default {
-  data() {
-    return {
-      newCategoryName: ''
-    };
-  },
-  methods: {
-    saveCategory() {
-      if (this.newCategoryName.trim() !== '') {
-        this.$emit('editCategory', this.newCategoryName);
-        this.newCategoryName = ''; // Clear the input field after saving
-        $('#Modal_Edit_Category').modal('hide'); // Close the modal after saving
+  setup() {
+    const categoryStore = useCategoryStore();
+
+    const editCategoryModal = computed(() => categoryStore.editCategoryModal);
+    const newCategoryName = ref('');
+
+    const saveCategory = () => {
+      if (newCategoryName.value.trim() !== '') {
+        categoryStore.saveCategory(newCategoryName.value);
+        newCategoryName.value = ''; // Clear the input field after saving
+        editCategoryModal.value = false; // Close the modal after saving
       }
-    }
+    };
+
+    return {
+      editCategoryModal,
+      newCategoryName,
+      saveCategory,
+    };
   }
 };
 </script>
