@@ -9,7 +9,7 @@
 <template>
   <div class="Content">
     <div v-if="Komponent === 'Kategorie'">
-      <Header Titel="getKatName" />
+      <Header :Titel="KategorieID" />
     </div>
     <div v-else>
       <Header :Titel="Komponent" />

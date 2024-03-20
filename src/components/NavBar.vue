@@ -8,7 +8,7 @@
       </div>
       <div>
         <p>Kategorien</p>
-        <Box v-for="(category, index) in categories" :key="index" :box-title="category.Titel" class="categoryButtons"/><br>
+        <Box v-for="(category, index) in categories" :key="index" :box-title="category.Titel" class="categoryButtons" @click="navigateToKat('Kategorie', category.id)"/><br>
         <Box box-title="+" class="categoryButtons" @click="openAddCategoryModal()" />
       </div>
       <div class="logoStyle">
@@ -17,7 +17,7 @@
     </div>
   </div>
   <div id="Content" class="Content col-md-1 float-left">
-    <Content :Komponent="activeComponent" /> </div>
+    <Content :Komponent="activeComponent" :KategorieID="KategorieID"/> </div>
   <AddCategoryModal />
 </template>
 
@@ -27,7 +27,6 @@ import Box from './Box.vue';
 import Content from './Content.vue';
 import AddCategoryModal from './AddCategoryModal.vue';
 import { useCategoriesStore } from '../Store/categoryStore.js';
-import { useRouter } from 'vue-router';
 
 export default {
   components: {
@@ -38,9 +37,16 @@ export default {
   setup() {
     const categoriesStore = useCategoriesStore();
     const activeComponent = ref('Alle'); // Initial active component
+    const KategorieID = ref(0); // Defining KategorieID as ref
 
     const navigateTo = (routeName) => {
       activeComponent.value = routeName;
+    };
+
+    const navigateToKat = (routeName, id) => {
+      activeComponent.value = routeName;
+      console.log(id);
+      KategorieID.value = id; // Updating the value of KategorieID using its .value property
     };
 
     const openAddCategoryModal = () => {
@@ -50,7 +56,9 @@ export default {
     return {
       categories: categoriesStore.getCategories(),
       activeComponent,
+      KategorieID, // Returning KategorieID as part of the setup
       navigateTo,
+      navigateToKat,
       openAddCategoryModal
     };
   }
