@@ -8,7 +8,7 @@
       </div>
       <div>
         <p>Kategorien</p>
-        <Box v-for="(category, index) in categories" :key="index" :box-title="category" class="categoryButtons" @click="openEditCategoryModal(index)" /><br>
+        <Box v-for="(category, index) in categories" :key="index" :box-title="category.Titel" class="categoryButtons" @click="openEditCategoryModal(index)" /><br>
         <Box box-title="+" class="categoryButtons" @click="openAddCategoryModal()" />
       </div>
       <div class="logoStyle">
