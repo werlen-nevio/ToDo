@@ -1,9 +1,11 @@
 <script setup>
     import ContentModal from './ContentModal.vue';
     import FilterModal from './FilterModal.vue';
+    import SearchModal from './SearchModal.vue';
 </script>
 
 <template>
+  <SearchModal />
   <div class="Header col-md-12" style="min-height: 50px;">
     <div class="Title col-md-4 float-left">
       <h1 class="Title-Text">{{ Titel }}</h1>
@@ -11,6 +13,7 @@
     <div class="col-md-4 float-right">
       <button @click="openAddModal()" class="btn btn-secondary float-right">+</button>
       <button @click="openFilterModal()" class="Filter-btn btn btn-secondary float-right"><i class="fa-solid fa-filter"></i></button>
+      <button @click="openSearchModal()" class="Filter-btn btn btn-secondary float-right"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>  
   </div>
 
@@ -34,6 +37,9 @@
       },
       openFilterModal() {
         $('#FilterModal').modal('show');
+      },
+      openSearchModal() {
+        $('#SearchModal').modal('show');
       }
     }
   }
