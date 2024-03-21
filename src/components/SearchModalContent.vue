@@ -1,11 +1,9 @@
+<script setup>
+    import ToDoComponent from './ToDoComponent.vue';
+</script>
+
 <template>
-    <ul>
-      <li v-for="todo in filteredTodos" :key="todo.id">
-        {{ todo.Titel }}
-        <p>{{ todo.Beschreibung }}</p>
-        <p>{{ todo.Datum }}</p>
-      </li>
-    </ul>
+      <ToDoComponent v-for="todo in filteredTodos" :key="todo.id" :Titel="todo.Titel" :Beschreibung="todo.Beschreibung" :Datum="todo.Datum" :ID="todo.id" :Finished="todo.Finished" :Kategorie="todo.Kategorie"/>
   </template>
   
   <script>

@@ -224,3 +224,30 @@ body {
 .mainButtons:hover, .categoryButtons:hover{
     cursor: pointer;
 }
+
+.modal-search, .modal-dialog-search{
+    width: 1000px;
+    max-width: 1000px;
+}
+
+.modal-dialog-search{
+    margin-left: 125px;
+
+    scrollbar-width: auto;
+    scrollbar-color: #2b3944 #6c757d;
+    
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+    width: 16px;
+    }
+    
+    *::-webkit-scrollbar-track {
+    background: #6c757d;
+    }
+    
+    *::-webkit-scrollbar-thumb {
+    background-color: #2b3944;
+    border-radius: 10px;
+    border: none;
+    }
+}
