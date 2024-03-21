@@ -7,7 +7,6 @@
         <Box box-title="Geplant" class="mainButtons" @click="navigateTo('Geplant')" /><br>
       </div>
       <div>
-        <p>Kategorien</p>
         <Box v-for="(category, index) in categories" :key="index" :box-title="category.Titel" class="categoryButtons" @click="navigateToKat('Kategorie', category.id)"/><br>
         <Box box-title="+" class="categoryButtons" @click="openAddCategoryModal()" />
       </div>
