@@ -24,6 +24,7 @@
     :Beschreibung="Beschreibung"
     :Datum="Datum"
     :ID="ID"
+    :Kategorie="Kategorie"
   />
 </template>
 
@@ -48,6 +49,10 @@ export default {
     },
     Finished: {
       type: Boolean,
+      required: true
+    },
+    Kategorie: {
+      type: Number,
       required: true
     }
   },

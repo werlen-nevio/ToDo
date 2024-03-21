@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="(todo, index) in filteredTodos" :key="index">
-      <ToDoComponent :Titel="todo.Titel" :Beschreibung="todo.Beschreibung" :Datum="todo.Datum" :ID="todo.id" :Finished="todo.Finished"/>
+      <ToDoComponent :Titel="todo.Titel" :Beschreibung="todo.Beschreibung" :Datum="todo.Datum" :ID="todo.id" :Finished="todo.Finished" :Kategorie="todo.Kategorie"/>
     </div>
   </div>
 </template>
