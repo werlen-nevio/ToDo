@@ -1,5 +1,6 @@
 <script setup>
     import ContentModal from './ContentModal.vue';
+    import FilterModal from './FilterModal.vue';
 </script>
 
 <template>
@@ -8,14 +9,15 @@
       <h1 class="Title-Text">{{ Titel }}</h1>
     </div>
     <div class="col-md-4 float-right">
-      <button @click="openModal()" class="btn btn-secondary float-right">+</button>
-      <button class="Filter-btn btn btn-secondary float-right"><i class="fa-solid fa-filter"></i></button>
+      <button @click="openAddModal()" class="btn btn-secondary float-right">+</button>
+      <button @click="openFilterModal()" class="Filter-btn btn btn-secondary float-right"><i class="fa-solid fa-filter"></i></button>
     </div>  
   </div>
 
   <ContentModal 
     :ID= "Number(0)"
   />
+  <FilterModal />
 </template>
 
 <script>
@@ -27,8 +29,11 @@
       }
     },
     methods: {
-      openModal() {
+      openAddModal() {
         $('#Modal_0').modal('show');
+      },
+      openFilterModal() {
+        $('#FilterModal').modal('show');
       }
     }
   }
