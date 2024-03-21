@@ -85,6 +85,11 @@ export default {
       };
 
       store.addTodo(newTodo);
+
+      localTitel.value = '';
+      localBeschreibung.value = '';
+      localDatum.value = '';
+      selectedCategory.value = 0;
     };
 
     const categories = categoriesStore.getCategories();
