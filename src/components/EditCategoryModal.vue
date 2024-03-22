@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { useCategoriesStore } from '../Store/categoryStore.js'; // Importiere den Pinia-Speicher
+import { useCategoriesStore } from '../Store/categoryStore.js';
 
 export default {
   props: {
@@ -44,16 +44,16 @@ export default {
   methods: {
     saveCategory() {
       if (this.newCategoryName.trim() !== '') {
-        const store = useCategoriesStore(); // Zugriff auf den Pinia-Speicher
-        store.editCategory({ id: this.categoryId, name: this.newCategoryName }); // Bearbeiten der Kategorie im Store
-        this.newCategoryName = ''; // Clear the input field after saving
-        $('#Modal_Edit_Category').modal('hide'); // Close the modal after saving
+        const store = useCategoriesStore();
+        store.editCategory({ id: this.categoryId, name: this.newCategoryName });
+        this.newCategoryName = '';
+        $('#Modal_Edit_Category').modal('hide');
       }
     },
     deleteCategory() {
-      const store = useCategoriesStore(); // Zugriff auf den Pinia-Speicher
-      store.deleteCategory(this.categoryId); // Löschen der Kategorie im Store
-      $('#Modal_Edit_Category').modal('hide'); // Close the modal after deleting
+      const store = useCategoriesStore();
+      store.deleteCategory(this.categoryId);
+      $('#Modal_Edit_Category').modal('hide');
     }
   }
 };

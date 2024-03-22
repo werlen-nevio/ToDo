@@ -25,12 +25,12 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue'; // Importiere ref und computed
-import { useCategoriesStore } from '../Store/categoryStore.js'; // Importiere den Pinia-Speicher
+import { ref, computed } from 'vue';
+import { useCategoriesStore } from '../Store/categoryStore.js';
 
 export default {
   setup() {
-    const categoryStore = useCategoriesStore(); // Zugriff auf den Pinia-Speicher
+    const categoryStore = useCategoriesStore();
 
     const addCategoryModal = computed(() => categoryStore.addCategoryModal);
     const titel = ref('');

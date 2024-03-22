@@ -10,9 +10,9 @@ const orderedFutureDatumsArray = computed(() => {
   const seenDates = new Set();
   return todosStore.todos
     .filter(todo => {
-      if (!todo.Datum || todo.Datum.trim() === '') return false; // Ignore todos without Datum
+      if (!todo.Datum || todo.Datum.trim() === '') return false;
       const date = new Date(todo.Datum);
-      return date > now; // Only consider future dates
+      return date > now;
     })
     .map(todo => {
       const date = new Date(todo.Datum);
