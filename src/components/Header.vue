@@ -55,6 +55,9 @@
       showNavBar() {
         $('#NavBar').toggle();
       },
+      openEditCatModal(id) {
+        $('#Modal_Edit_Category' + this.KategorieID).modal('show');
+      }
     }
   }
 </script>
