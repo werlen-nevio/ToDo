@@ -1,15 +1,29 @@
 <script setup>
-  import Header from './Header.vue'
-  import Heute from './Heute.vue'
-  import Geplant from './Geplant.vue'
-  import Alle from './Alle.vue'
-  import Kategorie from './Kategorie.vue'
+  import { defineProps, ref, watch } from 'vue';
+  import Header from './Header.vue';
+  import Heute from './Heute.vue';
+  import Geplant from './Geplant.vue';
+  import Alle from './Alle.vue';
+  import Kategorie from './Kategorie.vue';
+  import { useCategoriesStore } from '../Store/categoryStore.js';
+
+  const props = defineProps(['Komponent', 'KategorieID']);
+  const categoryStore = useCategoriesStore();
+
+  const Kategorien = ref([]);
+
+  let KatTitel = '';
+
+  watch(() => props.KategorieID, (newValue, oldValue) => {
+    Kategorien.value = categoryStore.categories.filter(category => category.id === newValue);
+    KatTitel = Kategorien._value[0].Titel;
+  });
 </script>
 
 <template>
   <div class="Content">
     <div v-if="Komponent === 'Kategorie'">
-      <Header :Titel="KategorieID" :KategorieID="KategorieID"/>
+      <Header :Titel="KatTitel" :KategorieID="KategorieID"/>
     </div>
     <div v-else>
       <Header :Titel="Komponent" KategorieID="0"/>
