@@ -24,16 +24,17 @@
 <script>
 import { ref } from 'vue';
 import Box from './Box.vue';
+import EditCategoryModal from './EditCategoryModal.vue';
 import Content from './Content.vue';
 import AddCategoryModal from './AddCategoryModal.vue';
-import EditCategoryModal from './EditCategoryModal.vue';
 import { useCategoriesStore } from '../Store/categoryStore.js';
 
 export default {
   components: {
     Box,
     Content,
-    AddCategoryModal
+    AddCategoryModal,
+    EditCategoryModal
   },
   setup() {
     const categoriesStore = useCategoriesStore();
