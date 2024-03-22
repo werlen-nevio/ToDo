@@ -38,7 +38,7 @@
         required: true
       },
       KategorieID: {
-        type: Number,
+        type: String,
         required: true
       }
     },

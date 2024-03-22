@@ -64,7 +64,7 @@ export default {
     },
     Kategorie: {
       type: Number,
-      required: true
+      required: false
     }
   },
   setup(props) {
