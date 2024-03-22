@@ -23,5 +23,3 @@ Filters: Use Pinia
 Save Finished State
 
 Use Filters in All Kategories
-
-Add Edit Kategory Modal
