@@ -1,20 +1,44 @@
 <script setup>
-    import ToDoComponent from './ToDoComponent.vue'
-    import Datum from './Datum.vue'
+import { computed, ref, defineProps, watch } from 'vue';
+import { useTodosStore } from '../Store/todoStore.js'
+import Datum from './Datum.vue'
+
+const props = defineProps({
+  KategorieID: {
+    type: String,
+    required: false
+  }
+});
+
+const todosStore = useTodosStore();
+const KategorieID = ref(props.KategorieID);
+
+const orderedDatumsArray = computed(() => {
+  const seenDates = new Set();
+  return todosStore.todos
+    .filter(todo => todo.Kategorie == KategorieID.value)
+    .map(todo => {
+      const date = new Date(todo.Datum);
+      const formattedDate = `${date.getFullYear().toString().padStart(4, '0')}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+      if (!seenDates.has(formattedDate)) {
+        seenDates.add(formattedDate);
+        return { date: formattedDate, original: todo.Datum };
+      }
+      return null;
+    })
+    .filter(date => date !== null)
+    .sort((a, b) => new Date(a.date) - new Date(b.date))
+    .map(item => item.original);
+});
+
+// Watch for changes in KategorieID prop
+watch(() => props.KategorieID, (newKategorieID, oldKategorieID) => {
+  KategorieID.value = newKategorieID;
+});
 </script>
 
 <template>
-  <Datum Datum="10.10.2023"/>
-  <ToDoComponent Titel="Titel" Beschreibung="Beschreibung" Datum="22.03.2024 10:10" :ID="Number(1)"/>
+  <div>
+    <Datum v-for="datum in orderedDatumsArray" :key="datum" :Datum="datum" />
+  </div>
 </template>
-
-<script>
-  export default {
-    props: {
-      KategorieID: {
-        type: String,
-        required: false
-      }
-    }
-  }
-</script>

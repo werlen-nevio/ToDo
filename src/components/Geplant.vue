@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'Vue'
+import { computed } from 'vue'
 import { useTodosStore } from '../Store/todoStore.js'
 import Datum from './Datum.vue'
 

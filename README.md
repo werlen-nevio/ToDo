@@ -24,6 +24,4 @@ Save Finished State
 
 Use Filters in All Kategories
 
-Fix custom Kategory overview
-
 Add Edit Kategory Modal

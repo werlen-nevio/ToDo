@@ -38,7 +38,7 @@
       <Alle />
     </div>
     <div v-else>
-      <Kategorie :ID="KategorieID" />
+      <Kategorie :KategorieID="KategorieID" />
     </div>
   </div>
 </template>
