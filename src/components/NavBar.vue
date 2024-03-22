@@ -17,7 +17,8 @@
   </div>
   <div id="Content" class="Content col-md-1 float-left">
     <Content :Komponent="activeComponent" :KategorieID="KategorieID"/> </div>
-  <AddCategoryModal />
+    <AddCategoryModal />
+    <EditCategoryModal v-for="(category, index) in categories" :key="index" :categoryId="category.id"></EditCategoryModal>
 </template>
 
 <script>
@@ -25,6 +26,7 @@ import { ref } from 'vue';
 import Box from './Box.vue';
 import Content from './Content.vue';
 import AddCategoryModal from './AddCategoryModal.vue';
+import EditCategoryModal from './EditCategoryModal.vue';
 import { useCategoriesStore } from '../Store/categoryStore.js';
 
 export default {
