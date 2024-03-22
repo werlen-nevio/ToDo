@@ -67,10 +67,6 @@
         width: 40px;
     }
 
-    input[type="text"], input[type="datetime-local"], select, option {
-        color: black;
-    }
-
     input[type="checkbox"] {
         margin-top: 9px !important;
         appearance: none;
@@ -132,6 +128,10 @@
         color: white;
         outline: none;
     }
+}
+
+input[type="text"], input[type="datetime-local"], select, option {
+    color: black !important;
 }
 
 body {
