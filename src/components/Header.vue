@@ -17,10 +17,10 @@
       </button>
     </div>
     <div class="col-md-4 float-right">
-      <button @click="openAddModal()" class="btn btn-secondary float-right">+</button>
+      <button @click="showNavBar()" id="showNavBar" class=" btn btn-secondary float-right"><i class="fa-solid fa-bars"></i></button>
+      <button @click="openAddModal()" class="Filter-btn btn btn-secondary float-right">+</button>
       <button @click="openFilterModal()" class="Filter-btn btn btn-secondary float-right"><i class="fa-solid fa-filter"></i></button>
       <button @click="openSearchModal()" class="Filter-btn btn btn-secondary float-right"><i class="fa-solid fa-magnifying-glass"></i></button>
-      <button @click="showNavBar()" id="showNavBar" class="Filter-btn btn btn-secondary float-right"><i class="fa-solid fa-bars"></i></button>
     </div>  
   </div>
 
