@@ -140,6 +140,7 @@ body {
 }
 
 #NavBar {
+    z-index: 100;
     position: fixed;
     height: 100vh;
     background-color: #2b3944;
@@ -259,6 +260,9 @@ Custom Breakpoints beacuse our css is trash and we didnt use enough bootstrap
     .modal-dialog-search{
         margin-left: 125px;
     }
+    #showNavBar {
+        display: none;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -270,6 +274,7 @@ Custom Breakpoints beacuse our css is trash and we didnt use enough bootstrap
     }
 
     .Content{
+        z-index: 1;
         margin-left: 0 !important;
         width: 98vw !important;
     }

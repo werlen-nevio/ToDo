@@ -20,6 +20,7 @@
       <button @click="openAddModal()" class="btn btn-secondary float-right">+</button>
       <button @click="openFilterModal()" class="Filter-btn btn btn-secondary float-right"><i class="fa-solid fa-filter"></i></button>
       <button @click="openSearchModal()" class="Filter-btn btn btn-secondary float-right"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button @click="showNavBar()" id="showNavBar" class="Filter-btn btn btn-secondary float-right"><i class="fa-solid fa-bars"></i></button>
     </div>  
   </div>
 
@@ -50,7 +51,10 @@
       },
       openSearchModal() {
         $('#SearchModal').modal('show');
-      }
+      },
+      showNavBar() {
+        $('#NavBar').toggle();
+      },
     }
   }
 </script>
