@@ -46,7 +46,6 @@ export default {
 
     const navigateToKat = (routeName, id) => {
       activeComponent.value = routeName;
-      console.log(id);
       KategorieID.value = id;
     };
 
