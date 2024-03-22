@@ -7,7 +7,7 @@
 <template>
   <SearchModal />
   <div class="Header col-md-12" style="min-height: 50px;">
-    <div class="Title col-md-4 float-left">
+    <div class="Title col-md-4 col-sm-4 float-left">
       <h1 class="Title-Text">{{ Titel }}</h1>
     </div>
     <div class="float-left">

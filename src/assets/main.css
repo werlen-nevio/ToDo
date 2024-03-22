@@ -233,8 +233,6 @@ body {
 }
 
 .modal-dialog-search{
-    margin-left: 125px;
-
     *::-webkit-scrollbar-track {
         background: #6c757d !important;
     }
@@ -253,3 +251,85 @@ body {
     border-radius: 10px;
     border: none;
     }
+
+/*
+Custom Breakpoints beacuse our css is trash and we didnt use enough bootstrap
+*/
+@media (min-width: 1200px) {
+    .modal-dialog-search{
+        margin-left: 125px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .modal-dialog-search{
+        width: 98vw;
+    }
+    #NavBar {
+        display: none;
+    }
+
+    .Content{
+        margin-left: 0 !important;
+        width: 98vw !important;
+    }
+
+    .ToDoComponent{
+        width: 98vw;
+    }
+}
+
+@media (max-width: 920px) {
+    .ToDoComponentDetails{
+        padding: 0;
+        width:89vw !important;
+    }
+    .ToDoComponent{
+        width: 97vw;
+    }
+}
+
+@media (max-width: 870px) {
+    .ToDoComponentDetails{
+        width:86vw !important;
+    }
+}
+
+@media (max-width: 720px) {
+    .ToDoComponentDetails{
+        width: 85vw !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .ToDoComponentDetails{
+        width: 83vw !important;
+    }
+}
+
+@media (max-width: 550px) {
+    .ToDoComponentDetails{
+        width: 80vw !important;
+    }
+    .ToDoComponent{
+        width: 96vw !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ToDoComponentDetails{
+        width: 78vw !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ToDoComponentDetails{
+        width: 78vw !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .ToDoComponentDetails{
+        width: 74vw !important;
+    }
+}
