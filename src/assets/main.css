@@ -232,11 +232,7 @@ body {
 
 .modal-dialog-search{
     margin-left: 125px;
-
-    scrollbar-width: auto;
-    scrollbar-color: #2b3944 #6c757d;
     
-    /* Chrome, Edge, and Safari */
     *::-webkit-scrollbar {
     width: 16px;
     }
