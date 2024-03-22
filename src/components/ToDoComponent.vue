@@ -73,9 +73,28 @@ export default {
     },
     formatDate(dateString) {
       const date = new Date(dateString);
-      const options = { year: 'numeric', month: 'long', day: 'numeric' };
-      return date.toLocaleDateString('de-DE', options);
+      const optionsWithTime = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      };
+      const optionsWithoutTime = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      };
+
+      const timePresent = dateString.includes('T');
+
+      if (timePresent) {
+        return date.toLocaleDateString('de-DE', optionsWithTime);
+      } else {
+        return date.toLocaleDateString('de-DE', optionsWithoutTime);
+      }
     }
+
   }
 }
 </script>
