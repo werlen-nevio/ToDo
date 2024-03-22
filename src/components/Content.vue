@@ -9,10 +9,10 @@
 <template>
   <div class="Content">
     <div v-if="Komponent === 'Kategorie'">
-      <Header :Titel="KategorieID" />
+      <Header :Titel="KategorieID" :KategorieID="KategorieID"/>
     </div>
     <div v-else>
-      <Header :Titel="Komponent" />
+      <Header :Titel="Komponent" KategorieID="0"/>
     </div>
     <div v-if="Komponent === 'Heute'">
       <Heute />
