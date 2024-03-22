@@ -140,6 +140,7 @@ body {
 }
 
 #NavBar {
+    position: fixed;
     height: 100vh;
     background-color: #2b3944;
     color: #fff;
@@ -192,6 +193,7 @@ body {
 
 .Content{
     width: calc(100vw - 345px);
+    margin-left: 250px;
 }
 
 #Content{
@@ -232,13 +234,18 @@ body {
 
 .modal-dialog-search{
     margin-left: 125px;
-    
-    *::-webkit-scrollbar {
+
+    *::-webkit-scrollbar-track {
+        background: #6c757d !important;
+    }
+}
+
+*::-webkit-scrollbar {
     width: 16px;
     }
     
     *::-webkit-scrollbar-track {
-    background: #6c757d;
+    background: #374A59;
     }
     
     *::-webkit-scrollbar-thumb {
@@ -246,4 +253,3 @@ body {
     border-radius: 10px;
     border: none;
     }
-}
