@@ -1,5 +1,6 @@
 <script setup>
   import ContentModal from './ContentModal.vue';
+  import { useTodosStore } from  '../Store/todoStore.js';
 </script>
 
 <template>
@@ -61,15 +62,15 @@ export default {
       $('#Modal_' + this.ID).modal('show');
     },
     toggleStatus(event) {
-      // Aktualisiere den Status im localstorage
-      const todos = JSON.parse(localStorage.getItem('todos'));
-      const updatedTodos = todos.map(todo => {
+      const todosStore = useTodosStore();
+      const updatedTodos = todosStore.todos.map(todo => {
         if (todo.id === this.ID) {
           todo.Finished = event.target.checked;
         }
         return todo;
       });
-      localStorage.setItem('todos', JSON.stringify(updatedTodos));
+      todosStore.todos = updatedTodos;
+      todosStore.saveTodos();
     },
     formatDate(dateString) {
       const date = new Date(dateString);
