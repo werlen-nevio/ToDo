@@ -20,6 +20,4 @@ Update edit todo so it actually updates
 
 Filters: Use Pinia
 
-Save Finished State
-
 Use Filters in All Kategories
