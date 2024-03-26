@@ -9,13 +9,16 @@
 <script setup>
 import { computed } from 'vue';
 import { useTodosStore } from '../Store/todoStore.js';
+import { useLocalStorageStore } from '../Store/useLocalStorageStore.js';
 import ToDoComponent from './ToDoComponent.vue';
 
 const store = useTodosStore();
+const localStorageStore = useLocalStorageStore();
 
 const filteredTodos = computed(() => {
   const today = new Date();
   const allTodos = store.todos;
+  const showFinished = localStorageStore.getShowFinished;
 
   return allTodos.filter(todo => {
     const todoDate = new Date(todo.Datum);
@@ -35,6 +38,4 @@ const filteredTodos = computed(() => {
     }
   });
 });
-
-let showFinished = JSON.parse(localStorage.getItem('showFinished'));
 </script>
