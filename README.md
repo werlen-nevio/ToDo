@@ -14,10 +14,12 @@ npm run dev
 
 # Todo
 
-Todo-Update open modal again
+Use Filter in Alle / Geplant
 
-Update edit todo so it actually updates
+Use Filter in Kategory
 
-Filters: Use Pinia
+Edit Category
 
-Use Filters in All Kategories
+Delete Category
+
+Edit Todo
