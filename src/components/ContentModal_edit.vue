@@ -26,7 +26,7 @@
             <label for="Kategorie">Kategorie</label>
             <select class="form-control" name="Kategorie" id="Kategorie" v-model="selectedCategory">
                 <option value="0">---</option>
-                <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.Titel }}</option>
+                <option v-for="category in categories" :key="category.id" :value="category.id" :selected="category.id === Kategorie">{{ category.Titel }}</option>
             </select>
           </div>
           <button @click="saveChanges" class="btn btn-primary">Save</button>
@@ -46,7 +46,8 @@ export default {
       editedTitel: this.Titel,
       editedBeschreibung: this.Beschreibung,
       editedDatum: this.Datum,
-      categories: [] // Initialize categories array
+      categories: [],
+      selectedCategory: this.Kategorie
     };
   },
   props: {
@@ -77,8 +78,6 @@ export default {
   },
   methods: {
     saveChanges() {
-      // Now categories is accessible within saveChanges method
-      console.log(this.categories);
       this.showModal = false;
     },
     closeModal() {
@@ -88,7 +87,6 @@ export default {
   setup() {
     const categoriesStore = useCategoriesStore();
 
-    // Populate categories array with data from the store
     const categories = categoriesStore.getCategories();
     return { categories };
   }
