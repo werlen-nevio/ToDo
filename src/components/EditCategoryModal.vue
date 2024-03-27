@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" @click="deleteAndReload(categoryId)">Löschen</button>
+          <button type="button" class="btn btn-danger" :disabled="todosCountForCategory > 0" @click="deleteAndReload(categoryId)">Löschen</button>
           <button type="submit" class="btn btn-primary" @click="validateAndSaveCategory(categoryId)">Speichern</button>
         </div>
       </div>
@@ -26,6 +26,7 @@
 
 <script>
 import { useCategoriesStore } from '../Store/categoryStore.js';
+import { useTodosStore } from '../Store/todoStore.js';
 
 export default {
   props: {
@@ -36,18 +37,37 @@ export default {
   },
   data() {
     return {
-      newCategoryName: ''
+      newCategoryName: '',
+      todosCountForCategory: 0
     };
+  },
+  mounted() {
+    this.countTodosForCategory();
+    const todosStore = useTodosStore();
+    this.unwatchTodos = todosStore.$subscribe((mutation, state) => {
+      this.countTodosForCategory();
+    });
+  },
+  beforeUnmount() {
+    this.unwatchTodos();
   },
   methods: {
     isCategoryNameValid() {
       return this.newCategoryName.trim() !== '';
     },
+    async countTodosForCategory() {
+      const todosStore = useTodosStore();
+      const todos = todosStore.getTodos();
+      const todosForCategory = todos.filter(todo => todo.Kategorie === this.categoryId);
+      this.todosCountForCategory = todosForCategory.length;
+    },
     deleteAndReload(id) {
-      const categoriesStore = useCategoriesStore();
-      categoriesStore.deleteCategory(id);
-      $('#Modal_Edit_Category' + id).modal('hide');
-      window.location.reload();
+      if (this.todosCountForCategory === 0) {
+        const categoriesStore = useCategoriesStore();
+        categoriesStore.deleteCategory(id);
+        $('#Modal_Edit_Category' + id).modal('hide');
+        window.location.reload();
+      }
     },
     validateAndSaveCategory(id) {
       if (this.isCategoryNameValid()) {
