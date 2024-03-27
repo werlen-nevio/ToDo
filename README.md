@@ -1,21 +1,12 @@
-# todo-list
+# ToDo Projekt
 
-## Project Setup
+## Projekt ausführen
+<details closed>
+    <summary>Projekt ausführen</summary>
 
-```sh
-npm install
-```
+    - Projekt klonen
 
-### Compile
+    - npm install
 
-```sh
-npm run dev
-```
-
-# Todo
-
-Edit Category
-
-Delete Category
-
-Edit Todo
+    - npm run dev
+</details>
