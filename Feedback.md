@@ -1,3 +1,5 @@
-# Rezession ToDo-List
+<div style="text-align: center;">
+<h1>Persönliches Feedback ToDo-List</h1>
 
 Wir hatten von Anfang an eine Vision wie unsere Webapplikation aussehen sollte und was sie machen kann. Nach unserer Vision haben wir ein Mockup aufgesetzt und uns an die Arbeit gemacht. Zu Beginn des Projekts haben wir zuerst das ganze UI gemacht. Als wir dann das UI gemacht haben, haben wir uns dann mit der Programmlogik befasst. Bei der Programmlogik hatten wir ein paar kleinere Schwierigkeiten bei der Umsetzung. Ansonsten verlief das Projekt aber nahezu reibungslos. Jeder von uns wusste was er zu tun hat und woran er arbeiten musste. Bei technischen Unklarheiten haben wir uns gemeinsam geholfen um eine Lösung für das Problem zu finden. Dank einer guten Planung der Arbeit hatten wir bis zum Schluss keinen Stress.
+</div>
