@@ -14,6 +14,6 @@
     - npm run dev
 </details>
 
-## Rezession
+## Feedback
 
 Unser Feedback finden Sie [hier](Feedback.md)
