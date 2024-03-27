@@ -30,12 +30,16 @@
 <script setup>
 import { computed, defineProps } from 'vue';
 import { useTodosStore } from '../Store/todoStore.js';
+import { useLocalStorageStore } from '../Store/useLocalStorageStore.js';
+
 import ToDoComponent from './ToDoComponent.vue';
 
 const props = defineProps(['Datum']);
 
-
 const store = useTodosStore();
+const localStorageStore = useLocalStorageStore();
+
+const showFinished = computed(() => localStorageStore.getShowFinished);
 
 const filteredTodos = computed(() => {
   const today = new Date(props.Datum);
@@ -43,7 +47,7 @@ const filteredTodos = computed(() => {
 
   return allTodos.filter(todo => {
     const todoDate = new Date(todo.Datum);
-    if (!showFinished) {
+    if (!showFinished.value) {
       return (
         today.getFullYear() === todoDate.getFullYear() &&
         today.getMonth() === todoDate.getMonth() &&
@@ -59,6 +63,4 @@ const filteredTodos = computed(() => {
     }
   });
 });
-
-let showFinished = JSON.parse(localStorage.getItem('showFinished'));
 </script>
