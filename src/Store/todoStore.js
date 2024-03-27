@@ -10,12 +10,12 @@ export const useTodosStore = defineStore('todos', {
       this.saveTodos();
     },
     editTodo(updatedTodo) {
-      const todoIndex = this.todos.findIndex(todo => todo.id === updatedTodo.id);
+      const todoIndex = this.todos.findIndex(todo => todo.id === updatedTodo.id);      
       if (todoIndex !== -1) {
-        this.todos[todoIndex] = updatedTodo;
+        this.todos[todoIndex] = updatedTodo;        
         this.saveTodos();
       }
-    },
+    },    
     deleteTodo(id) {
       this.todos = this.todos.filter(todo => todo.id !== id);
       this.saveTodos();

@@ -38,6 +38,7 @@
 
 <script>
 import { useCategoriesStore } from '../Store/categoryStore.js';
+import { useTodosStore } from '@/Store/todoStore';
 
 export default {
   data() {
@@ -78,6 +79,17 @@ export default {
   },
   methods: {
     saveChanges() {
+      const updatedTodo = {
+        Titel: this.editedTitel,
+        Beschreibung: this.editedBeschreibung,
+        Datum: this.editedDatum,
+        id: this.ID,
+        Kategorie: this.selectedCategory,
+        Finished: this.Finished
+      };
+
+      this.todosStore.editTodo(updatedTodo);
+
       this.showModal = false;
     },
     closeModal() {
@@ -86,9 +98,10 @@ export default {
   },
   setup() {
     const categoriesStore = useCategoriesStore();
+    const todosStore = useTodosStore();
 
     const categories = categoriesStore.getCategories();
-    return { categories };
+    return { categories, todosStore };
   }
 };
 </script>
