@@ -59,50 +59,51 @@ export default {
   components: {
     ContentModalEdit
   },
-  setup() {
-    const myModalRef = ref(null);
+setup(props) {
+  const myModalRef = ref(null);
+  const ID = ref(props.ID);
 
-    const openModal = () => {
-      myModalRef.value.show();
-    };
+  const openModal = () => {
+    myModalRef.value.show();
+  };
 
-    const toggleStatus = (event) => {
-      const todosStore = useTodosStore();
-      const updatedTodos = todosStore.todos.map(todo => {
-        if (todo.id === this.ID) {
-          todo.Finished = event.target.checked;
-        }
-        return todo;
-      });
-      todosStore.todos = updatedTodos;
-      todosStore.saveTodos();
-    };
-
-    const formatDate = (dateString) => {
-      const date = new Date(dateString);
-      const optionsWithTime = {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit'
-      };
-      const optionsWithoutTime = {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
-      };
-
-      const timePresent = dateString.includes('T');
-
-      if (timePresent) {
-        return date.toLocaleDateString('de-DE', optionsWithTime);
-      } else {
-        return date.toLocaleDateString('de-DE', optionsWithoutTime);
+  const toggleStatus = (event) => {
+    const todosStore = useTodosStore();
+    const updatedTodos = todosStore.todos.map(todo => {
+      if (todo.id === ID.value) {
+        todo.Finished = event.target.checked;
       }
+      return todo;
+    });
+    todosStore.todos = updatedTodos;
+    todosStore.saveTodos();
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const optionsWithTime = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit'
+    };
+    const optionsWithoutTime = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
     };
 
-    return { myModalRef, openModal, toggleStatus, formatDate };
-  }
+    const timePresent = dateString.includes('T');
+
+    if (timePresent) {
+      return date.toLocaleDateString('de-DE', optionsWithTime);
+    } else {
+      return date.toLocaleDateString('de-DE', optionsWithoutTime);
+    }
+  };
+
+  return { myModalRef, openModal, toggleStatus, formatDate };
+}
 }
 </script>
