@@ -11,15 +11,18 @@
               <div class="modal-body">
                   <div class="form-group">
                       <label for="Titel">Titel *</label>
-                      <input type="text" class="form-control" id="Titel" placeholder="Titel" v-model="localTitel">
+                      <input type="text" class="form-control" id="Titel" placeholder="Titel" v-model="localTitel" :class="{ 'is-invalid': !isTitelValid && addClicked }">
+                      <div v-if="!isTitelValid && addClicked" class="invalid-feedback">Bitte geben Sie einen Titel ein.</div>
                   </div>
                   <div class="form-group">
                       <label for="Beschreibung">Beschreibung *</label>
-                      <input type="text" class="form-control" id="Beschreibung" placeholder="Beschreibung" v-model="localBeschreibung">
+                      <input type="text" class="form-control" id="Beschreibung" placeholder="Beschreibung" v-model="localBeschreibung" :class="{ 'is-invalid': !isBeschreibungValid && addClicked }">
+                      <div v-if="!isBeschreibungValid && addClicked" class="invalid-feedback">Bitte geben Sie eine Beschreibung ein.</div>
                   </div>
                   <div class="form-group">
                       <label for="Datum">Datum *</label>
-                      <input type="datetime-local" class="form-control" id="Datum" v-model="localDatum">
+                      <input type="datetime-local" class="form-control" id="Datum" v-model="localDatum" :class="{ 'is-invalid': !isDatumValid && addClicked }">
+                      <div v-if="!isDatumValid && addClicked" class="invalid-feedback">Bitte geben Sie ein Datum ein.</div>
                   </div>
                   <div class="form-group">
                       <label for="Kategorie">Kategorie</label>
@@ -30,7 +33,7 @@
                   </div>
               </div>
               <div class="modal-footer">
-                  <button @click="addTodo()" class="btn btn-primary">Hinzufügen</button>
+                  <button @click="addClicked = true; addTodo()" class="btn btn-primary">Hinzufügen</button>
               </div>
           </div>
       </div>
@@ -72,15 +75,14 @@ export default {
     const localBeschreibung = ref(props.Beschreibung || '');
     const localDatum = ref(props.Datum || '');
     const selectedCategory = ref(props.Kategorie || 0);
-    const isFormValid = computed(() => {
-      return localTitel.value.trim() !== '' &&
-             localBeschreibung.value.trim() !== '' &&
-             localDatum.value.trim() !== '';
-    });
+    const addClicked = ref(false);
+
+    const isTitelValid = computed(() => localTitel.value.trim() !== '');
+    const isBeschreibungValid = computed(() => localBeschreibung.value.trim() !== '');
+    const isDatumValid = computed(() => localDatum.value.trim() !== '');
 
     const addTodo = () => {
-      if (!isFormValid.value) {
-        alert('Bitte füllen Sie alle erforderlichen Felder aus.');
+      if (!isTitelValid.value || !isBeschreibungValid.value || !isDatumValid.value) {
         return;
       }
 
@@ -112,7 +114,10 @@ export default {
       localDatum,
       categories,
       selectedCategory,
-      isFormValid
+      isTitelValid,
+      isBeschreibungValid,
+      isDatumValid,
+      addClicked
     };
   },
 };
