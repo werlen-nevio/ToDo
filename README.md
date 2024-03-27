@@ -14,6 +14,10 @@
     - npm run dev
 </details>
 
+## Docu
+
+Unsere Dokumentation finden Sie [hier](Docu/Dokumentation.md)
+
 ## Feedback
 
 Unser Feedback finden Sie [hier](Feedback.md)
