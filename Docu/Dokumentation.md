@@ -1,6 +1,6 @@
 # Dokumentation
 
-## Features
+## Bilder
 Bilder zu allen Features finden Sie [hier](Bilder.md)
 
 ## Packages
