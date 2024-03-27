@@ -11,22 +11,22 @@
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label for="title">Titel</label>
+            <label for="title">Titel *</label>
             <input type="text" class="form-control" id="title" v-model="editedTitel">
           </div>
           <div class="form-group">
-            <label for="description">Beschreibung</label>
+            <label for="description">Beschreibung *</label>
             <textarea class="form-control" id="description" v-model="editedBeschreibung"></textarea>
           </div>
           <div class="form-group">
-            <label for="date">Datum</label>
+            <label for="date">Datum *</label>
             <input type="datetime-local" class="form-control" id="date" v-model="editedDatum">
           </div>
           <div class="form-group">
-            <label for="Kategorie">Kategorie</label>
+            <label for="Kategorie">Kategorie *</label>
             <select class="form-control" name="Kategorie" id="Kategorie" v-model="selectedCategory">
-                <option value="0">---</option>
-                <option v-for="category in categories" :key="category.id" :value="category.id" :selected="category.id === Kategorie">{{ category.Titel }}</option>
+              <option value="0">---</option>
+              <option v-for="category in categories" :key="category.id" :value="category.id" :selected="category.id === Kategorie">{{ category.Titel }}</option>
             </select>
           </div>
           <button @click="saveChanges" class="btn btn-primary">Save</button>
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 import { useCategoriesStore } from '../Store/categoryStore.js';
 import { useTodosStore } from '@/Store/todoStore';
 
@@ -79,6 +80,11 @@ export default {
   },
   methods: {
     saveChanges() {
+      if (!this.isFormValid()) {
+        alert('Bitte füllen Sie alle erforderlichen Felder aus.');
+        return;
+      }
+
       const updatedTodo = {
         Titel: this.editedTitel,
         Beschreibung: this.editedBeschreibung,
@@ -94,6 +100,11 @@ export default {
     },
     closeModal() {
       this.showModal = false;
+    },
+    isFormValid() {
+      return this.editedTitel.trim() !== '' &&
+             this.editedBeschreibung.trim() !== '' &&
+             this.editedDatum.trim() !== '';
     }
   },
   setup() {
