@@ -46,6 +46,13 @@ export default {
       window.location.reload();
     },
     updateCategory(id) {
+      const categoriesStore = useCategoriesStore();
+      const categoryToUpdate = categoriesStore.categories.find(category => category.id === id);
+      if (categoryToUpdate) {
+        categoryToUpdate.Titel = this.newCategoryName;
+        categoriesStore.saveCategories();
+        $('#Modal_Edit_Category' + id).modal('hide');
+      }
     }
   }
 };
