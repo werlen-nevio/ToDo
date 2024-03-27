@@ -46,6 +46,7 @@ export default {
 
         categoryStore.addCategory(newKategorie);
         titel.value = '';
+        $('#Modal_Add_Category').modal('hide');
       }
     };
 
