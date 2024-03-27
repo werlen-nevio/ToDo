@@ -1,8 +1,3 @@
-<script setup>
-  import ContentModal from './ContentModal.vue';
-  import { useTodosStore } from  '../Store/todoStore.js';
-</script>
-
 <template>
   <div class="ToDoComponent col-md-12 clearfix">
     <div class="ToDoCheckbox col-md-1 float-left">
@@ -14,22 +9,25 @@
       <p class="ToDoComponentDetail ToDoDatum">{{ formatDate(Datum) }}</p>
     </div>
     <div class="TodoIcon col-md-1 float-left">
-      <button @click="openModal" class="btn-edit">
-        <i class="fa-solid fa-pen"></i>
-      </button>
+      <b-button @click="openModal" variant="primary"></b-button>
     </div>
+    <b-modal ref="myModalRef" :id="'Modal_' + ID" title="Edit Content">
+      <ContentModalEdit
+        :Titel="Titel"
+        :Beschreibung="Beschreibung"
+        :Datum="Datum"
+        :ID="ID"
+        :Kategorie="Kategorie"
+      />
+    </b-modal>
   </div>
-
-  <ContentModal 
-    :Titel="Titel"
-    :Beschreibung="Beschreibung"
-    :Datum="Datum"
-    :ID="ID"
-    :Kategorie="Kategorie"
-  />
 </template>
 
 <script>
+import { ref } from 'vue';
+import ContentModalEdit from './ContentModal_edit.vue';
+import { useTodosStore } from '../Store/todoStore.js';
+
 export default {
   props: {
     Titel: {
@@ -57,11 +55,17 @@ export default {
       required: true
     }
   },
-  methods: {
-    openModal() {
-      $('#Modal_' + this.ID).modal('show');
-    },
-    toggleStatus(event) {
+  components: {
+    ContentModalEdit
+  },
+  setup() {
+    const myModalRef = ref(null);
+
+    const openModal = () => {
+      myModalRef.value.show();
+    };
+
+    const toggleStatus = (event) => {
       const todosStore = useTodosStore();
       const updatedTodos = todosStore.todos.map(todo => {
         if (todo.id === this.ID) {
@@ -71,8 +75,9 @@ export default {
       });
       todosStore.todos = updatedTodos;
       todosStore.saveTodos();
-    },
-    formatDate(dateString) {
+    };
+
+    const formatDate = (dateString) => {
       const date = new Date(dateString);
       const optionsWithTime = {
         year: 'numeric',
@@ -94,8 +99,9 @@ export default {
       } else {
         return date.toLocaleDateString('de-DE', optionsWithoutTime);
       }
-    }
+    };
 
+    return { myModalRef, openModal, toggleStatus, formatDate };
   }
 }
 </script>
