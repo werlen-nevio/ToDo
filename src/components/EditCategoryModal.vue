@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" @click="deleteCategory(categoryId)">Löschen</button>
+          <button type="button" class="btn btn-danger" @click="deleteAndReload(categoryId)">Löschen</button>
           <button type="submit" class="btn btn-primary" @click="updateCategory(categoryId)">Speichern</button>
         </div>
       </div>
@@ -31,6 +31,28 @@ export default {
     categoryId: {
       type: Number,
       required: true
+    }
+  },
+  data() {
+    return {
+      newCategoryName: ''
+    };
+  },
+  methods: {
+    deleteAndReload(id) {
+      const categoriesStore = useCategoriesStore();
+      categoriesStore.deleteCategory(id);
+      $('#Modal_Edit_Category' + id).modal('hide');
+      window.location.reload();
+    },
+    updateCategory(id) {
+      const categoriesStore = useCategoriesStore();
+      const categoryToUpdate = categoriesStore.categories.find(category => category.id === id);
+      if (categoryToUpdate) {
+        categoryToUpdate.Titel = this.newCategoryName;
+        categoriesStore.saveCategories();
+        $('#Modal_Edit_Category' + id).modal('hide');
+      }
     }
   }
 };

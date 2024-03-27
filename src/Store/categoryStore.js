@@ -15,7 +15,7 @@ export const useCategoriesStore = defineStore('categories', {
         this.categories[categoryIndex] = updatedCategory;
         this.saveCategories();
       }
-    },
+    },    
     deleteCategory(id) {
       this.categories = this.categories.filter(category => category.id !== id);
       this.saveCategories();
