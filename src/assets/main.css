@@ -16,10 +16,10 @@
         color: #E3AA29;
     }
 
-    .btn-secondary{
+    .btn-secondary, .btn-secondary:active{
         width: 48px;
         height: 48px !important;
-        color: black;
+        color: black !important;
         font-size: 22px;
     }
 
@@ -130,12 +130,18 @@
     }
 }
 
+input[type="text"], input[type="datetime-local"], select, option {
+    color: black !important;
+}
+
 body {
     background-color: #374A59;
     width: 100%;
 }
 
 #NavBar {
+    z-index: 100;
+    position: fixed;
     height: 100vh;
     background-color: #2b3944;
     color: #fff;
@@ -188,6 +194,7 @@ body {
 
 .Content{
     width: calc(100vw - 345px);
+    margin-left: 250px;
 }
 
 #Content{
@@ -219,4 +226,115 @@ body {
 
 .mainButtons:hover, .categoryButtons:hover{
     cursor: pointer;
+}
+
+.modal-search, .modal-dialog-search{
+    width: 1000px;
+    max-width: 1000px;
+}
+
+.modal-dialog-search{
+    *::-webkit-scrollbar-track {
+        background: #6c757d !important;
+    }
+}
+
+*::-webkit-scrollbar {
+    width: 16px;
+    }
+    
+    *::-webkit-scrollbar-track {
+    background: #374A59;
+    }
+    
+    *::-webkit-scrollbar-thumb {
+    background-color: #2b3944;
+    border-radius: 10px;
+    border: none;
+    }
+
+/*
+Custom Breakpoints beacuse our css is trash and we didnt use enough bootstrap
+*/
+@media (min-width: 1200px) {
+    .modal-dialog-search{
+        margin-left: 125px;
+    }
+    #showNavBar {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .modal-dialog-search{
+        width: 98vw;
+    }
+    #NavBar {
+        display: none;
+    }
+
+    .Content{
+        z-index: 1;
+        margin-left: 0 !important;
+        width: 98vw !important;
+    }
+
+    .ToDoComponent{
+        width: 98vw;
+    }
+}
+
+@media (max-width: 920px) {
+    .ToDoComponentDetails{
+        padding: 0;
+        width:89vw !important;
+    }
+    .ToDoComponent{
+        width: 97vw;
+    }
+}
+
+@media (max-width: 870px) {
+    .ToDoComponentDetails{
+        width:86vw !important;
+    }
+}
+
+@media (max-width: 720px) {
+    .ToDoComponentDetails{
+        width: 85vw !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .ToDoComponentDetails{
+        width: 83vw !important;
+    }
+}
+
+@media (max-width: 550px) {
+    .ToDoComponentDetails{
+        width: 80vw !important;
+    }
+    .ToDoComponent{
+        width: 96vw !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ToDoComponentDetails{
+        width: 78vw !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ToDoComponentDetails{
+        width: 78vw !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .ToDoComponentDetails{
+        width: 74vw !important;
+    }
 }

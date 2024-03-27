@@ -8,7 +8,7 @@
             <span aria-hidden="true"><i class="fa-solid fa-x"></i></span>
           </button>
         </div>
-        <form @submit.prevent="addKategorie">
+        <form>
           <div class="modal-body">
             <div class="form-group">
               <label for="Titel">Kategoriename *</label>
@@ -16,7 +16,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Speichern</button>
+            <button data-dismiss="modal" @click="addKategorie()" class="btn btn-primary">Speichern</button>
           </div>
         </form>
       </div>
@@ -25,22 +25,24 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue'; // Importiere ref und computed
-import { useCategoriesStore } from '../Store/categoryStore.js'; // Importiere den Pinia-Speicher
+import { ref, computed } from 'vue';
+import { useCategoriesStore } from '../Store/categoryStore.js';
 
 export default {
   setup() {
-    const categoryStore = useCategoriesStore(); // Zugriff auf den Pinia-Speicher
+    const categoryStore = useCategoriesStore();
 
     const addCategoryModal = computed(() => categoryStore.addCategoryModal);
     const titel = ref('');
 
     const addKategorie = () => {
-      if (titel.value.trim() !== '') {
-        categoryStore.addCategory(titel.value); // Füge die Kategorie dem Store hinzu
-        titel.value = ''; // Clear the input field after saving
-        addCategoryModal.value = false; // Close the modal after saving
-      }
+      const newKategorie = {
+        id: categoryStore.categories.length + 1,
+        Titel: titel.value
+      };
+
+      categoryStore.addCategory(newKategorie);
+      titel.value = '';
     };
 
     return {

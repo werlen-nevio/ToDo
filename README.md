@@ -12,30 +12,10 @@ npm install
 npm run dev
 ```
 
-# Aufbau
+# Todo
 
-```
-NavBar
-    Mainblock("Alle")
-    Mainblock("Heute")
-    Mainblock("Geplant")
+Edit Category
 
-    Kategorien
-        Text: Kategorien
-        Kategorie("Kategorie 1")
-        AddKategorie()
-    Logo
+Delete Category
 
-
-Content
-    Header
-        Titel(KomponentenName)
-        Buttons
-            Filter()
-            AddTodo()
-    Body(heute)
-        Todo(Bezeichnung, Beschreibung, Datum, Status)
-    Body(else)
-        Datum
-            Todo(Bezeichnung, Beschreibung, Datum, Status)
-```
+Edit Todo
