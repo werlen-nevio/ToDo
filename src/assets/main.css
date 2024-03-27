@@ -338,3 +338,7 @@ Custom Breakpoints beacuse our css is trash and we didnt use enough bootstrap
         width: 74vw !important;
     }
 }
+
+.btn-edit{
+    font-size: 20px;
+}
