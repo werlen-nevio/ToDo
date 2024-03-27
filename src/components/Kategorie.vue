@@ -31,7 +31,6 @@ const orderedDatumsArray = computed(() => {
     .map(item => item.original);
 });
 
-// Watch for changes in KategorieID prop
 watch(() => props.KategorieID, (newKategorieID, oldKategorieID) => {
   KategorieID.value = newKategorieID;
 });

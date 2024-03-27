@@ -13,7 +13,6 @@
   const Kategorien = ref([]);
   const KatTitel = ref('');
 
-  // Watcher für props.KategorieID
   watch(() => props.KategorieID, (newValue, oldValue) => {
     Kategorien.value = categoryStore.categories.filter(category => category.id === newValue);
     if (Kategorien.value.length > 0) {
@@ -23,7 +22,6 @@
     }
   });
 
-  // Watcher für categoryStore.categories
   watch(categoryStore.categories, (newCategories, oldCategories) => {
     if (props.KategorieID !== null && props.KategorieID !== undefined) {
       const updatedCategory = newCategories.find(category => category.id === props.KategorieID);
@@ -31,7 +29,7 @@
         KatTitel.value = updatedCategory.Titel;
       }
     }
-  }, { deep: true }); // Tiefe Überwachung, um Änderungen in den verschachtelten Objekten zu erkennen
+  }, { deep: true });
 </script>
 
 <template>
