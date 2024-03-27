@@ -16,4 +16,4 @@
 
 ## Rezession
 
-Unsere Rezession finden Sie [hier](Rezession.md)
+Unser Feedback finden Sie [hier](Feedback.md)
