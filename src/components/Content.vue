@@ -11,13 +11,27 @@
   const categoryStore = useCategoriesStore();
 
   const Kategorien = ref([]);
+  const KatTitel = ref('');
 
-  let KatTitel = '';
-
+  // Watcher für props.KategorieID
   watch(() => props.KategorieID, (newValue, oldValue) => {
     Kategorien.value = categoryStore.categories.filter(category => category.id === newValue);
-    KatTitel = Kategorien._value[0].Titel;
+    if (Kategorien.value.length > 0) {
+      KatTitel.value = Kategorien.value[0].Titel;
+    } else {
+      KatTitel.value = '';
+    }
   });
+
+  // Watcher für categoryStore.categories
+  watch(categoryStore.categories, (newCategories, oldCategories) => {
+    if (props.KategorieID !== null && props.KategorieID !== undefined) {
+      const updatedCategory = newCategories.find(category => category.id === props.KategorieID);
+      if (updatedCategory) {
+        KatTitel.value = updatedCategory.Titel;
+      }
+    }
+  }, { deep: true }); // Tiefe Überwachung, um Änderungen in den verschachtelten Objekten zu erkennen
 </script>
 
 <template>
