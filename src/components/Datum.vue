@@ -1,5 +1,5 @@
 <template>
-    <div class="ListDatum">
+    <div v-if="filteredTodos.length > 0" class="ListDatum">
         <p class="ListDatumText">{{ formattedDate }}</p>
     </div>
     <div v-for="(todo, index) in filteredTodos" :key="index">

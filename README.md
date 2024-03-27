@@ -14,12 +14,6 @@ npm run dev
 
 # Todo
 
-Use Filter in Datum.vue
-
-Use Filter in Alle / Geplant
-
-Use Filter in Kategory
-
 Edit Category
 
 Delete Category
