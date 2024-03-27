@@ -11,16 +11,23 @@
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title">Titel</label>
             <input type="text" class="form-control" id="title" v-model="editedTitel">
           </div>
           <div class="form-group">
-            <label for="description">Description</label>
+            <label for="description">Beschreibung</label>
             <textarea class="form-control" id="description" v-model="editedBeschreibung"></textarea>
           </div>
           <div class="form-group">
-            <label for="date">Date</label>
+            <label for="date">Datum</label>
             <input type="datetime-local" class="form-control" id="date" v-model="editedDatum">
+          </div>
+          <div class="form-group">
+            <label for="Kategorie">Kategorie</label>
+            <select class="form-control" name="Kategorie" id="Kategorie" v-model="selectedCategory">
+                <option value="0">---</option>
+                <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.Titel }}</option>
+            </select>
           </div>
           <button @click="saveChanges" class="btn btn-primary">Save</button>
         </div>
@@ -55,15 +62,22 @@ export default {
     ID: {
       type: Number,
       required: true
+    },
+    Kategorie: {
+      type: Number,
+      required: true
+    },
+    Finished: {
+      type: Boolean,
+      required: true
     }
   },
   methods: {
     saveChanges() {
-      // Hier können Sie Ihre Logik zum Speichern der Änderungen einfügen
-      this.showModal = false; // Modal schließen, nachdem die Änderungen gespeichert wurden
+      this.showModal = false;
     },
     closeModal() {
-      this.showModal = false; // Modal schließen
+      this.showModal = false;
     }
   }
 };
@@ -89,7 +103,7 @@ export default {
 .modal-content {
   background-color: #6c757d;
   margin: 15% auto;
-  margin-top: 10%;
+  margin-top: 30px;
   padding: 20px;
   border: none;
   width: 50%;

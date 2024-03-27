@@ -18,6 +18,7 @@
         :Datum="Datum"
         :ID="ID"
         :Kategorie="Kategorie"
+        :Finished="Finished"
       />
     </b-modal>
   </div>
