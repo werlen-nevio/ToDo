@@ -14,6 +14,10 @@
     - npm run dev
 </details>
 
-## Feedback
+## Rezession
 
 Unser Feedback finden Sie [hier](Feedback.md)
+
+## Mockup
+
+Unser Mockup finden Sie [hier](ToDoAppMock.pdf)
