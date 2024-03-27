@@ -37,13 +37,16 @@
 </template>
 
 <script>
+import { useCategoriesStore } from '../Store/categoryStore.js';
+
 export default {
   data() {
     return {
       showModal: false,
       editedTitel: this.Titel,
       editedBeschreibung: this.Beschreibung,
-      editedDatum: this.Datum
+      editedDatum: this.Datum,
+      categories: [] // Initialize categories array
     };
   },
   props: {
@@ -74,17 +77,26 @@ export default {
   },
   methods: {
     saveChanges() {
+      // Now categories is accessible within saveChanges method
+      console.log(this.categories);
       this.showModal = false;
     },
     closeModal() {
       this.showModal = false;
     }
+  },
+  setup() {
+    const categoriesStore = useCategoriesStore();
+
+    // Populate categories array with data from the store
+    const categories = categoriesStore.getCategories();
+    return { categories };
   }
 };
 </script>
 
 <style scoped>
-#description{
+#description {
   color: black;
 }
 
