@@ -12,11 +12,12 @@
           <div class="modal-body">
             <div class="form-group">
               <label for="Titel">Kategoriename *</label>
-              <input type="text" class="form-control" v-model="titel">
+              <input type="text" class="form-control" v-model="titel" :class="{ 'is-invalid': !isTitelValid }">
+              <div v-if="!isTitelValid" class="invalid-feedback">Bitte geben Sie einen Kategoriennamen ein.</div>
             </div>
           </div>
           <div class="modal-footer">
-            <button data-dismiss="modal" @click="addKategorie()" class="btn btn-primary">Speichern</button>
+            <button data-dismiss="modal" @click="addKategorie()" :disabled="!isTitelValid" class="btn btn-primary">Speichern</button>
           </div>
         </form>
       </div>
@@ -34,20 +35,24 @@ export default {
 
     const addCategoryModal = computed(() => categoryStore.addCategoryModal);
     const titel = ref('');
+    const isTitelValid = computed(() => titel.value.trim() !== '');
 
     const addKategorie = () => {
-      const newKategorie = {
-        id: categoryStore.categories.length + 1,
-        Titel: titel.value
-      };
+      if (isTitelValid.value) {
+        const newKategorie = {
+          id: categoryStore.categories.length + 1,
+          Titel: titel.value
+        };
 
-      categoryStore.addCategory(newKategorie);
-      titel.value = '';
+        categoryStore.addCategory(newKategorie);
+        titel.value = '';
+      }
     };
 
     return {
       addCategoryModal,
       titel,
+      isTitelValid,
       addKategorie,
     };
   },
