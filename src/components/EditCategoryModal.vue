@@ -12,11 +12,12 @@
           <div class="form-group">
             <label for="editCategoryName">Neuer Kategoriename *</label>
             <input type="text" class="form-control" id="editCategoryName" v-model="newCategoryName" placeholder="Neuer Name">
+            <span v-if="!isCategoryNameValid()" class="text-danger">Kategoriename darf nicht leer sein.</span>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" @click="deleteAndReload(categoryId)">Löschen</button>
-          <button type="submit" class="btn btn-primary" @click="updateCategory(categoryId)">Speichern</button>
+          <button type="submit" class="btn btn-primary" @click="validateAndSaveCategory(categoryId)">Speichern</button>
         </div>
       </div>
     </div>
@@ -39,19 +40,24 @@ export default {
     };
   },
   methods: {
+    isCategoryNameValid() {
+      return this.newCategoryName.trim() !== '';
+    },
     deleteAndReload(id) {
       const categoriesStore = useCategoriesStore();
       categoriesStore.deleteCategory(id);
       $('#Modal_Edit_Category' + id).modal('hide');
       window.location.reload();
     },
-    updateCategory(id) {
-      const categoriesStore = useCategoriesStore();
-      const categoryToUpdate = categoriesStore.categories.find(category => category.id === id);
-      if (categoryToUpdate) {
-        categoryToUpdate.Titel = this.newCategoryName;
-        categoriesStore.saveCategories();
-        $('#Modal_Edit_Category' + id).modal('hide');
+    validateAndSaveCategory(id) {
+      if (this.isCategoryNameValid()) {
+        const categoriesStore = useCategoriesStore();
+        const categoryToUpdate = categoriesStore.categories.find(category => category.id === id);
+        if (categoryToUpdate) {
+          categoryToUpdate.Titel = this.newCategoryName;
+          categoriesStore.saveCategories();
+          $('#Modal_Edit_Category' + id).modal('hide');
+        }
       }
     }
   }
