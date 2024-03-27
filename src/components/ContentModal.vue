@@ -30,7 +30,7 @@
                   </div>
               </div>
               <div class="modal-footer">
-                  <button data-dismiss="modal" @click="addTodo()" class="btn btn-primary">Hinzufügen</button>
+                  <button @click="addTodo()" class="btn btn-primary">Hinzufügen</button>
               </div>
           </div>
       </div>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useTodosStore } from '../Store/todoStore.js';
 import { useCategoriesStore } from '../Store/categoryStore.js';
 
@@ -68,11 +68,22 @@ export default {
   setup(props) {
     const store = useTodosStore();
     const categoriesStore = useCategoriesStore();
-    let localTitel = ref(props.Titel || '');
-    let localBeschreibung = ref(props.Beschreibung || '');
-    let localDatum = ref(props.Datum || '');
+    const localTitel = ref(props.Titel || '');
+    const localBeschreibung = ref(props.Beschreibung || '');
+    const localDatum = ref(props.Datum || '');
+    const selectedCategory = ref(props.Kategorie || 0);
+    const isFormValid = computed(() => {
+      return localTitel.value.trim() !== '' &&
+             localBeschreibung.value.trim() !== '' &&
+             localDatum.value.trim() !== '';
+    });
 
     const addTodo = () => {
+      if (!isFormValid.value) {
+        alert('Bitte füllen Sie alle erforderlichen Felder aus.');
+        return;
+      }
+
       const newTodo = {
         id: store.todos.length + 1,
         Titel: localTitel.value,
@@ -88,11 +99,10 @@ export default {
       localBeschreibung.value = '';
       localDatum.value = '';
       selectedCategory.value = 0;
+      $(`#Modal_${props.ID}`).modal('hide');
     };
 
     const categories = categoriesStore.getCategories();
-
-    const selectedCategory = ref(props.Kategorie || 0);
 
     return {
       store,
@@ -101,7 +111,8 @@ export default {
       localBeschreibung,
       localDatum,
       categories,
-      selectedCategory
+      selectedCategory,
+      isFormValid
     };
   },
 };
